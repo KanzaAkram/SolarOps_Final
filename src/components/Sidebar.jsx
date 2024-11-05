@@ -17,80 +17,49 @@ import {
   SettingsOutlined,
   ChevronLeft,
   ChevronRightOutlined,
-  HomeOutlined,
-  DeleteOutlined,
-  WaterDropOutlined,
-  OfflineBoltOutlined,
-  AirOutlined,
-  LocalParkingOutlined,
-  CloudOutlined,
-  CommuteOutlined,
-  AdminPanelSettingsOutlined,
-  Co2Outlined,
-  TrafficOutlined,
+  PictureAsPdf,
+  LocationOn,
+  SolarPower,
+  ReportProblem,
 } from "@mui/icons-material";
 import { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import FlexBetween from "./FlexBetween";
 import profileImage from "@/assets/avatar.svg";
+import Visualizations from "@/scenes/Visualizations";
 
 const navItems = [
   {
-    text: "Dashboard",
-    icon: <HomeOutlined />,
+    text: "User Manual",
+    icon: <PictureAsPdf />,
     path: "dashboard",
   },
   {
-    text: "Environment Monitoring",
+    text: "Site Suitability Recommendations",
     icon: null,
   },
   {
-    text: "Air Quality",
-    icon: <AirOutlined />,
-    path: "airquality",
+    text: "Monitoring",
+    icon: <LocationOn />,
+    path: "visualizations",
   },
   {
-    text: "Weather",
-    icon: <CloudOutlined />,
-    path: "weather",
-  },
-  {
-    text: "CO2 Emissions",
-    icon: <Co2Outlined />,
-    path: "co2emissions",
-  },
-  {
-    text: "Traffic and Transportation",
+    text: "Solar Power Forecast",
     icon: null,
   },
   {
-    text: "Traffic Flow",
-    icon: <TrafficOutlined />,
-    path: "trafficflow",
-  },
-  // {
-  //   text: "Public Transport",
-  //   icon: <CommuteOutlined />,
-  //   path: "publictransport",
-  // },
-  {
-    text: "Parking Availability",
-    icon: <LocalParkingOutlined />,
-    path: "parkingavailability",
+    text: "Power Generation Prediction",
+    icon: <SolarPower />,
+    path: "powerprediction",
   },
   {
-    text: "Utilities and Energy",
+    text: "Fault detection",
     icon: null,
   },
   {
-    text: "Energy Consumption",
-    icon: <OfflineBoltOutlined />,
-    path: "energy-consumption",
-  },
-  {
-    text: "Water Usage",
-    icon: <WaterDropOutlined />,
-    path: "waterusage",
+    text: "Fault",
+    icon: <ReportProblem />,
+    path: "fault",
   },
 ];
 
@@ -139,7 +108,7 @@ function Sidebar({
                   width="fit-content"
                 >
                   <Typography variant="h4" fontWeight="bold">
-                    Smart City Dashboard
+                    SolarOps Dashboard
                   </Typography>
                   {!isNonMobile && (
                     <IconButton
@@ -245,12 +214,12 @@ function Sidebar({
                   {user.occupation}
                 </Typography>
               </Box>
-              <SettingsOutlined
+              {/* <SettingsOutlined
                 sx={{
                   color: theme.palette.secondary[300],
                   fontSize: "25px ",
                 }}
-              />
+              /> */}
             </FlexBetween>
           </Box>
         </Drawer>

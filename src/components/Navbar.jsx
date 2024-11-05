@@ -1,5 +1,6 @@
 /* eslint-disable react/prop-types */
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import {
   LightModeOutlined,
   DarkModeOutlined,
@@ -25,15 +26,25 @@ import {
 import { setMode } from "@/state";
 import FlexBetween from "./FlexBetween";
 import profileImage from "@/assets/avatar.svg";
+import {logout} from "../store/authSlice";
 
 function Navbar({ user, isSidebarOpen, setIsSidebarOpen }) {
   const dispatch = useDispatch();
   const theme = useTheme();
-
+  const navigate=useNavigate(); 
   const [anchorEl, setAnchorEl] = useState(null);
   const isOpen = Boolean(anchorEl);
   const handleClick = (event) => setAnchorEl(event.currentTarget);
-  const handleClose = () => setAnchorEl(null);
+
+  const userData = sessionStorage.getItem("organizationName");
+  const org_name = userData ? userData : "";
+
+  const handleClose = () => {
+    sessionStorage.clear(); 
+    setAnchorEl(null); 
+    dispatch(logout());
+    navigate("/"); 
+  };
 
   return (
     <AppBar
@@ -49,7 +60,7 @@ function Navbar({ user, isSidebarOpen, setIsSidebarOpen }) {
           <IconButton onClick={() => setIsSidebarOpen(!isSidebarOpen)}>
             <MenuIcon />
           </IconButton>
-          <FlexBetween
+          {/* <FlexBetween
             backgroundColor={theme.palette.background.alt}
             borderRadius="9px"
             gap="3rem"
@@ -59,7 +70,10 @@ function Navbar({ user, isSidebarOpen, setIsSidebarOpen }) {
             <IconButton>
               <Search />
             </IconButton>
-          </FlexBetween>
+          </FlexBetween> */}
+          <div className="">
+            <h1 className="font-extrabold text-lg">{org_name}</h1>
+          </div>
         </FlexBetween>
 
         <FlexBetween gap="1em">
@@ -71,7 +85,7 @@ function Navbar({ user, isSidebarOpen, setIsSidebarOpen }) {
             )}
           </IconButton>
           <IconButton>
-            <SettingsOutlined sx={{ fontSize: "25px" }} />
+            {/* <SettingsOutlined sx={{ fontSize: "25px" }} /> */}
           </IconButton>
           <FlexBetween>
             <Button

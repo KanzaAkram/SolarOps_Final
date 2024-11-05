@@ -18,6 +18,7 @@ import ReactDOM from "react-dom/client";
 import { Provider } from "react-redux";
 import { configureStore } from "@reduxjs/toolkit";
 import { setupListeners } from "@reduxjs/toolkit/query";
+import authReducer from "../src/store/authSlice";
 
 import App from "./App.jsx";
 import globalReducer from "./state";
@@ -28,6 +29,7 @@ import "./index.css";
 // Configure the Redux store
 const store = configureStore({
   reducer: {
+    auth: authReducer,
     global: globalReducer,
     [api.reducerPath]: api.reducer,
   },

@@ -8,30 +8,30 @@ export default {
     extend: {
       colors: {
         color: {
-          1: "#AC6AFF",
-          2: "#FFC876",
-          3: "#FF776F",
-          4: "#7ADB78",
-          5: "#858DFF",
-          6: "#FF98E2",
+          1: "#FF8C00", // Bright orange, vibrant and bold
+          2: "#FF6A00", // Warm, slightly darker orange
+          3: "#FF4500", // Deep orange-red, intense
+          4: "#FFBD68", // Light orange with a hint of yellow, like a soft amber
+          5: "#FF9C00", // Slightly muted orange, still bright but softer
+          6: "#1C1C1C", // Very dark blackish gray, near black
         },
         stroke: {
           1: "#26242C",
         },
         n: {
-          1: "#FFFFFF",
-          2: "#CAC6DD",
-          3: "#ADA8C3",
-          4: "#757185",
-          5: "#3F3A52",
-          6: "#252134",
-          7: "#15131D",
-          8: "#0E0C15",
-          9: "#474060",
-          10: "#43435C",
-          11: "#1B1B2E",
-          12: "#2E2A41",
-          13: "#6C7275",
+          1: "#FFF9E3", // Very light, almost white with a hint of yellow
+          2: "#FFE8B3", // Light pastel yellow
+          3: "#FFD580", // Light yellow-orange
+          4: "#FFBB47", // Soft orange
+          5: "#FF9E1B", // Bright orange-yellow
+          6: "#E68A00", // Deep orange
+          7: "#CC7700", // Dark orange with some brownish hues
+          8: "#FF8C00", // Darker burnt orange
+          9: "#A65402", // Rich orange-brown, deeper tone
+          10: "#8F4500", // Dark burnt orange
+          11: "#703300", // Deep reddish-brown, hint of orange
+          12: "#593000", // Dark brownish-orange
+          13: "#402400", // Very dark brown-orange
         },
       },
       fontFamily: {
@@ -69,7 +69,7 @@ export default {
       backgroundImage: {
         "radial-gradient": "radial-gradient(var(--tw-gradient-stops))",
         "conic-gradient":
-          "conic-gradient(from 225deg, #FFC876, #79FFF7, #9F53FF, #FF98E2, #FFC876)",
+          "conic-gradient(from 225deg, #FFC876, #FF9B56, #D47600, #1C1C1C, #FFC876)",
       },
     },
   },

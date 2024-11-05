@@ -49,21 +49,32 @@ import Collaboration from "./components/Collaboration";
 import Footer from "./components/Footer";
 import Header from "./components/Header";
 import Hero from "./components/Hero";
-import Pricing from "./components/Pricing";
-import Roadmap from "./components/Roadmap";
 import Services from "./components/Services";
 
 // Import dashboard components
 import Layout from "./scenes/Layout";
-import Dashboard from "./scenes/Dashboard";
-import AirQuality from "./scenes/AirQuality";
+import UserManual from "./scenes/UserManual";
 import Admin from "./scenes/Admin";
-import Weather from "./scenes/Weather";
-import CO2Emission from "./scenes/CO2Emission";
-import TrafficFlowMap from "./scenes/TrafficFlowMap";
-import WaterUsage from "./scenes/WaterUsage";
-import EnergyConsumption from "./scenes/EnergyConsumption";
-import ParkingAvailability from "./scenes/ParkingAvailability";
+// import Weather from "./scenes/PowerPrediction";
+// import CO2Emission from "./scenes/CO2Emission";
+// import TrafficFlowMap from "./scenes/Heatmap";
+// import WaterUsage from "./scenes/Fault";
+// import EnergyConsumption from "./scenes/EnergyConsumption";
+// import ParkingAvailability from "./scenes/ParkingAvailability";
+// import UserManual from "./scenes/UserManual";
+import Monitoring from "./scenes/Monitoring";
+import PowerPrediction from "./scenes/PowerPrediction";
+import Fault from "./scenes/Fault";
+import Faq from "./components/Faq"
+
+import Login from "./components/Login/login";
+import Register from "./components/SignUp/register";
+import Visualizations from "./scenes/Visualizations";
+import WeatherDetails from "./scenes/Weather";
+import {Navigate} from "react-router-dom";
+import { useLocation } from "react-router-dom";
+
+
 
 // Landing page component
 const LandingPage = () => {
@@ -75,8 +86,7 @@ const LandingPage = () => {
         <Benefits />
         <Collaboration />
         <Services />
-        <Pricing />
-        <Roadmap />
+        <Faq />
         <Footer />
       </div>
       <ButtonGradient />
@@ -84,30 +94,83 @@ const LandingPage = () => {
   );
 };
 
-// Define routes
-const router = createBrowserRouter(
-  createRoutesFromElements(
-    <>
-      <Route path="/" element={<LandingPage />} />
-      <Route element={<Layout />}>
-        <Route path="/dashboard" element={<Dashboard />} />
-        <Route path="/airquality" element={<AirQuality />} />
-        <Route path="/weather" element={<Weather />} />
-        <Route path="/co2emissions" element={<CO2Emission />} />
-        <Route path="/trafficflow" element={<TrafficFlowMap />} />
-        <Route path="/waterusage" element={<WaterUsage />} />
-        <Route path="/admin" element={<Admin />} />
-        <Route path="/energy-consumption" element={<EnergyConsumption />} />
-        <Route path="/parkingavailability" element={<ParkingAvailability />} />
-      </Route>
-    </>
-  )
-);
+const ProtectedRoute = ({ element, redirectPath = "/login" }) => {
+  const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
+  const isAuthenticatedFromStorage = localStorage.getItem("isAuthenticated") === "true";
+  console.log(isAuthenticatedFromStorage);
+  
+  const isUserAuthenticated = isAuthenticated || isAuthenticatedFromStorage;
+  const location = useLocation();
 
+  console.log("isUserAuthenticated:", isUserAuthenticated); // Log to debug
+
+  if (!isUserAuthenticated) {
+    // Store the current path before redirecting
+    localStorage.setItem("redirectPath", window.location.pathname);
+    return <Navigate to={redirectPath} />;
+  }
+
+  return element;
+};
+
+
+
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <LandingPage />,
+  },
+  {
+    path: "/loginpage",
+    element: <Login />,
+  },
+  {
+    path: "/registerpage",
+    element: <Register />,
+  },
+  {
+    element: <Layout />,
+    children: [
+      {
+        path: "/dashboard",
+        element: <ProtectedRoute element={<UserManual />} />,
+      },
+      {
+        path: "/monitoring",
+        element: <ProtectedRoute element={<Monitoring />} />,
+      },
+      {
+        path: "/powerprediction",
+        element: <ProtectedRoute element={<PowerPrediction />} />,
+      },
+      {
+        path: "/fault",
+        element: <ProtectedRoute element={<Fault />} />,
+      },
+      {
+        path: "/admin",
+        element: <ProtectedRoute element={<Admin />} />,
+      },
+      {
+        path: "/visualizations",
+        element: <ProtectedRoute element={<Visualizations />} />,
+      },
+      {
+        path: "/location/:id",
+        element: <ProtectedRoute element={<WeatherDetails />} />,
+      },
+    ],
+  },
+  {
+    path: "*", // Catch all unmatched routes
+    element: <Navigate to="/" />, // Redirect to landing page for unmatched routes
+  },
+]);
 function App() {
   const mode = useSelector((state) => state.global.mode);
   const theme = useMemo(() => createTheme(themeSettings(mode)), [mode]);
 
+ 
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />

@@ -1,43 +1,51 @@
 import { benefits } from "../constants";
 import Heading from "./Heading";
 import Section from "./Section";
-import Arrow from "../assets/svg/Arrow";
 import { GradientLight } from "./design/Benefits";
 import ClipPath from "../assets/svg/ClipPath";
 
 const Benefits = () => {
   return (
     <Section id="features">
-      <div className="container relative z-2">
+      <div className="container relative z-2 text-center py-12">
+        {/* Centering the heading */}
         <Heading
-          className="md:max-w-md lg:max-w-2xl"
-          title="Chat Smarter, Not Harder with Brainwave"
+          className="md:max-w-md lg:max-w-2xl mx-auto text-center"
+          title={
+            <span style={{ color: "#FFD966" }}>
+              Optimize Solar Power Effortlessly with SolarOps
+            </span>
+          }
         />
 
-        <div className="flex flex-wrap gap-10 mb-10">
-          {benefits.map((item) => (
+        <div className="flex flex-wrap gap-8 mb-5 justify-center">
+          {/* Map over the benefits array and position cards conditionally */}
+          {benefits.map((item, index) => (
             <div
-              className="block relative p-0.5 bg-no-repeat bg-[length:100%_100%] md:max-w-[24rem]"
+              className={`block relative p-0.5 bg-no-repeat bg-[length:100%_100%] md:max-w-[24rem] ${
+                index >= benefits.length - 2 ? "flex-none" : ""
+              }`}
               style={{
                 backgroundImage: `url(${item.backgroundUrl})`,
+                marginRight: index === benefits.length - 2 ? "0.5rem" : "0",
               }}
               key={item.id}
             >
               <div className="relative z-2 flex flex-col min-h-[22rem] p-[2.4rem] pointer-events-none">
-                <h5 className="h5 mb-5">{item.title}</h5>
-                <p className="body-2 mb-6 text-n-3">{item.text}</p>
-                <div className="flex items-center mt-auto">
-                  <img
-                    src={item.iconUrl}
-                    width={48}
-                    height={48}
-                    alt={item.title}
-                  />
-                  <p className="ml-auto font-code text-xs font-bold text-n-1 uppercase tracking-wider">
-                    Explore more
-                  </p>
-                  <Arrow />
+                {/* Circular bordered image with orange border */}
+                <div className="flex justify-center mb-5">
+                  <div className="w-28 h-28 rounded-full border-4 border-gray-900 overflow-hidden">
+                    <img
+                      src={item.image}
+                      alt={item.title}
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
                 </div>
+
+                <h5 className="h5 mb-5">{item.title}</h5>
+                <p className="body-2 mb-6 text-n-1">{item.text}</p>
+                <div className="flex items-center mt-auto"></div>
               </div>
 
               {item.light && <GradientLight />}
@@ -46,7 +54,8 @@ const Benefits = () => {
                 className="absolute inset-0.5 bg-n-8"
                 style={{ clipPath: "url(#benefits)" }}
               >
-                <div className="absolute inset-0 opacity-0 transition-opacity hover:opacity-10">
+                {/* Hover effect with lower opacity */}
+                <div className="absolute inset-0 opacity-0 transition-opacity hover:opacity-30">
                   {item.imageUrl && (
                     <img
                       src={item.imageUrl}

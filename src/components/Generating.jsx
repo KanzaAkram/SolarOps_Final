@@ -26,10 +26,10 @@ const Generating = ({ className }) => {
     >
       <img className="w-5 h-5 mr-2" src={loading} alt="Loading" />{" "}
       {/* Adjusted margin */}
-      Transforming sunlight into power, hang tight! {/* Updated headline */}
+      Transforming sunlight into power, hang tight!
+       {/* Updated headline */}
     </div>
   );
 };
 
 export default Generating;
-

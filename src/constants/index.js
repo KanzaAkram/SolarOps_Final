@@ -24,10 +24,6 @@ import {
   raindrop,
   recording01,
   recording03,
-  roadmap1,
-  roadmap2,
-  roadmap3,
-  roadmap4,
   searchMd,
   slack,
   sliders04,
@@ -43,19 +39,14 @@ export const navigation = [
     url: "#features",
   },
   {
-    id: "1",
-    title: "Pricing",
-    url: "#pricing",
-  },
-  {
     id: "2",
-    title: "How to use",
+    title: "Services",
     url: "#how-to-use",
   },
   {
     id: "3",
-    title: "Roadmap",
-    url: "#roadmap",
+    title: "FAQ",
+    url: "#faq",
   },
   {
     id: "4",
@@ -75,19 +66,13 @@ export const heroIcons = [homeSmile, file02, searchMd, plusSquare];
 
 export const notificationImages = [notification4, notification3, notification2];
 
-export const companyLogos = [
-  // Sustainability,
-  // Optimization,
-  // Monitoring,
-  // Visualization,
-  // Recommendations,
-  yourlogo,
-];
+export const companyLogos = [];
+
 
 export const brainwaveServices = [
-  "Photo generating",
-  "Photo enhance",
-  "Seamless Integration",
+  "Power Generation Forecasting",
+  "Solar Energy Performance Monitoring",
+  "Adaptive Power Prediction",
 ];
 
 export const brainwaveServicesIcons = [
@@ -98,44 +83,9 @@ export const brainwaveServicesIcons = [
   sliders04,
 ];
 
-export const roadmap = [
-  {
-    id: "0",
-    title: "Voice recognition",
-    text: "Enable the chatbot to understand and respond to voice commands, making it easier for users to interact with the app hands-free.",
-    date: "May 2023",
-    status: "done",
-    imageUrl: roadmap1,
-    colorful: true,
-  },
-  {
-    id: "1",
-    title: "Gamification",
-    text: "Add game-like elements, such as badges or leaderboards, to incentivize users to engage with the chatbot more frequently.",
-    date: "May 2023",
-    status: "progress",
-    imageUrl: roadmap2,
-  },
-  {
-    id: "2",
-    title: "Chatbot customization",
-    text: "Allow users to customize the chatbot's appearance and behavior, making it more engaging and fun to interact with.",
-    date: "May 2023",
-    status: "done",
-    imageUrl: roadmap3,
-  },
-  {
-    id: "3",
-    title: "Integration with APIs",
-    text: "Allow the chatbot to access external data sources, such as weather APIs or news APIs, to provide more relevant recommendations.",
-    date: "May 2023",
-    status: "progress",
-    imageUrl: roadmap4,
-  },
-];
 
 export const collabText =
-  "With smart automation and top-notch security, it's the perfect solution for teams looking to work smarter.";
+  "Optimize solar grid placement with smart automation and real-time environmental analysis for maximum energy output.";
 
 export const collabContent = [
   {
@@ -146,12 +96,15 @@ export const collabContent = [
   {
     id: "1",
     title: "Smart Automation",
+    text: "Leverage advanced automation to continuously monitor and adjust solar grid operations, ensuring peak efficiency without manual intervention."
   },
   {
     id: "2",
     title: "Top-notch Security",
+    text: "Protect your energy infrastructure with robust security protocols that safeguard data integrity and prevent unauthorized access at all levels."
   },
 ];
+
 
 export const collabApps = [
   {
@@ -212,94 +165,51 @@ export const collabApps = [
   },
 ];
 
-export const pricing = [
-  {
-    id: "0",
-    title: "Basic",
-    description: "AI chatbot, personalized recommendations",
-    price: "0",
-    features: [
-      "An AI chatbot that can understand your queries",
-      "Personalized recommendations based on your preferences",
-      "Ability to explore the app and its features without any cost",
-    ],
-  },
-  {
-    id: "1",
-    title: "Premium",
-    description: "Advanced AI chatbot, priority support, analytics dashboard",
-    price: "9.99",
-    features: [
-      "An advanced AI chatbot that can understand complex queries",
-      "An analytics dashboard to track your conversations",
-      "Priority support to solve issues quickly",
-    ],
-  },
-  {
-    id: "2",
-    title: "Enterprise",
-    description: "Custom AI chatbot, advanced analytics, dedicated account",
-    price: null,
-    features: [
-      "An AI chatbot that can understand your queries",
-      "Personalized recommendations based on your preferences",
-      "Ability to explore the app and its features without any cost",
-    ],
-  },
-];
-
 export const benefits = [
   {
     id: "0",
-    title: "Ask anything",
-    text: "Lets users quickly find answers to their questions without having to search through multiple sources.",
+    title: "Fault Detection",
+    text: "Spot Faults, Boost Performance: Upload, Detect, and Optimize with Confidence!",
     backgroundUrl: "./src/assets/benefits/card-1.svg",
-    iconUrl: benefitIcon1,
+    image: "./src/assets/benefits/image-1.jpeg", // replace this with the actual image path
     imageUrl: benefitImage2,
   },
   {
     id: "1",
-    title: "Improve everyday",
-    text: "The app uses natural language processing to understand user queries and provide accurate and relevant responses.",
+    title: "Site Suitability Recommendations",
+    text: "Find the Perfect Spot: Power Your Solar Setup with Precision Heatmaps!",
     backgroundUrl: "./src/assets/benefits/card-2.svg",
-    iconUrl: benefitIcon2,
-    imageUrl: benefitImage2,
+    image: "./src/assets/benefits/image-6.png", // replace this with the actual image path
     light: true,
+    imageUrl: benefitImage2,
   },
   {
     id: "2",
-    title: "Connect everywhere",
-    text: "Connect with the AI chatbot from anywhere, on any device, making it more accessible and convenient.",
+    title: "Solar Power Forecast",
+    text: "Predict the Sun's Power: Optimize Solar Output with Data-Driven Insights!",
     backgroundUrl: "./src/assets/benefits/card-3.svg",
-    iconUrl: benefitIcon3,
+    image: "./src/assets/benefits/image-3.jpeg", // replace this with the actual image path
     imageUrl: benefitImage2,
   },
   {
     id: "3",
-    title: "Fast responding",
-    text: "Lets users quickly find answers to their questions without having to search through multiple sources.",
+    title: "Solar Panel Installation and Management Manual",
+    text: "Maximize Solar Energy: Expert Tips for Seamless Installation and Management!",
     backgroundUrl: "./src/assets/benefits/card-4.svg",
-    iconUrl: benefitIcon4,
-    imageUrl: benefitImage2,
+    image: "./src/assets/benefits/image-4.jpeg", // replace this with the actual image path
     light: true,
+    imageUrl: benefitImage2,
   },
   {
     id: "4",
-    title: "Ask anything",
-    text: "Lets users quickly find answers to their questions without having to search through multiple sources.",
+    title: "Monitoring Tab",
+    text: "Track Solar Performance: Monitor, Manage, and Maximize Output with Ease!",
     backgroundUrl: "./src/assets/benefits/card-5.svg",
-    iconUrl: benefitIcon1,
-    imageUrl: benefitImage2,
-  },
-  {
-    id: "5",
-    title: "Improve everyday",
-    text: "The app uses natural language processing to understand user queries and provide accurate and relevant responses.",
-    backgroundUrl: "./src/assets/benefits/card-6.svg",
-    iconUrl: benefitIcon2,
+    image: "./src/assets/benefits/image-5.jpeg", // replace this with the actual image path
     imageUrl: benefitImage2,
   },
 ];
+
 
 export const socials = [
   {
