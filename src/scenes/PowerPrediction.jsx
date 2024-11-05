@@ -42,6 +42,7 @@ const PowerPrediction = () => {
     }
   };
 
+
   const fetchToken = async () => {
     const username = "nustuniversity_khan_sana";
     const password = "19PU5oCRwg";
@@ -153,7 +154,13 @@ const PowerPrediction = () => {
   const fetchWeatherData = async (lat, lon) => {
     const localTime = new Date();
     const date = localTime.toISOString().split("T")[0];
-    const currentHour = localTime.getHours();
+
+    let currentHour = localTime.getHours();
+    if (currentHour < 10) {
+      currentHour = '0' + currentHour; // Prepend '0' for single-digit hours
+    } else {
+      currentHour = currentHour.toString(); // Keep as is for two-digit hours
+    }
     console.log(currentHour);
 
     try {
@@ -333,7 +340,12 @@ const PowerPrediction = () => {
   const fetchNearbyWeatherData = async (lat, lon) => {
     const localTime = new Date();
     const date = localTime.toISOString().split("T")[0];
-    const currentHour = localTime.getHours();
+    let currentHour = localTime.getHours();
+    if (currentHour < 10) {
+      currentHour = '0' + currentHour; // Prepend '0' for single-digit hours
+    } else {
+      currentHour = currentHour.toString(); // Keep as is for two-digit hours
+    }
     console.log(currentHour);
     try {
       const meteomaticsResponse = await axios.get(
