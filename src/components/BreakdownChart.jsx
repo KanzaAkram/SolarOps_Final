@@ -2,6 +2,7 @@
 import { ResponsivePie } from "@nivo/pie";
 import { Box, Typography, useTheme, CircularProgress } from "@mui/material";
 import { useGetSalesQuery } from "@/state/api";
+import PropTypes from "prop-types";
 
 function BreakdownChart({ isDashboard = false }) {
   const { data, isLoading } = useGetSalesQuery();
@@ -148,5 +149,12 @@ function BreakdownChart({ isDashboard = false }) {
     </Box>
   );
 }
+BreakdownChart.propTypes = {
+  isDashboard: PropTypes.bool,
+};
 
+// Default props
+BreakdownChart.defaultProps = {
+  isDashboard: false,
+};
 export default BreakdownChart;

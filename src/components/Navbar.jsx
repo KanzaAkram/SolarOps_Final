@@ -24,6 +24,7 @@ import { setMode } from "@/state";
 import FlexBetween from "./FlexBetween";
 import profileImage from "@/assets/avatar.svg";
 import {logout} from "../store/authSlice";
+import PropTypes from "prop-types";
 
 function Navbar({ user, isSidebarOpen, setIsSidebarOpen }) {
   const dispatch = useDispatch();
@@ -137,5 +138,14 @@ function Navbar({ user, isSidebarOpen, setIsSidebarOpen }) {
     </AppBar>
   );
 }
+
+Navbar.propTypes = {
+  user: PropTypes.shape({
+    name: PropTypes.string.isRequired,
+    occupation: PropTypes.string.isRequired,
+  }).isRequired,
+  isSidebarOpen: PropTypes.bool.isRequired,
+  setIsSidebarOpen: PropTypes.func.isRequired,
+};
 
 export default Navbar;

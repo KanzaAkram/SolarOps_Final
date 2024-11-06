@@ -142,7 +142,7 @@
 }
 
 .power-prediction {
-  max-width: 80%;
+  max-width: 80% !important;
   margin: auto;
   padding: 20px;
   background-color: #f9f9f9;

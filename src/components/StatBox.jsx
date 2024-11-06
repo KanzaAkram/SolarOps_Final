@@ -1,6 +1,7 @@
 /* eslint-disable react/prop-types */
 import { Box, Typography, useTheme } from "@mui/material";
 import FlexBetween from "./FlexBetween";
+import PropTypes from "prop-types";
 
 function StatBox({ title, value, increase, icon, description }) {
   const theme = useTheme();
@@ -43,5 +44,13 @@ function StatBox({ title, value, increase, icon, description }) {
     </Box>
   );
 }
+
+StatBox.propTypes = {
+  title: PropTypes.string.isRequired,
+  value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
+  increase: PropTypes.string,
+  icon: PropTypes.element,
+  description: PropTypes.string,
+};
 
 export default StatBox;

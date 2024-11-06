@@ -1,4 +1,5 @@
 import React, { useRef } from 'react';
+import PropTypes from 'prop-types';
 
 const TextToSpeech = ({ text, children }) => {
   const utteranceRef = useRef(null);
@@ -123,6 +124,11 @@ const UserManual = () => {
       </div>
    
   );
+};
+
+TextToSpeech.propTypes = {
+  text: PropTypes.string.isRequired,
+  children: PropTypes.node.isRequired,
 };
 
 export default UserManual;

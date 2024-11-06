@@ -637,7 +637,10 @@ const PowerPrediction = () => {
   return (
     <>
     <h1 className="text-amber-600 text-center font-extrabold text-4xl mb-3">Power Generation Prediction</h1>
-      <div className="power-prediction">
+      <div className="w-[100%] power-prediction"
+      style={{
+        width: "80% !important",
+      }}>
         <h2 className="font-bold my-2">Enter Your Location</h2>
         <textarea
           ref={textareaRef}

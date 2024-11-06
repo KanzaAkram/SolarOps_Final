@@ -3,6 +3,7 @@ import { useMemo } from "react";
 import { ResponsiveLine } from "@nivo/line";
 import { useTheme } from "@mui/material";
 import { useGetSalesQuery } from "@/state/api";
+import PropTypes from "prop-types";
 
 function OverviewChart({ isDashboard = false, view }) {
   const theme = useTheme();
@@ -163,5 +164,10 @@ function OverviewChart({ isDashboard = false, view }) {
     />
   );
 }
+
+OverviewChart.propTypes = {
+  isDashboard: PropTypes.bool,
+  view: PropTypes.oneOf(["sales", "units"]).isRequired, // ensures that view is either 'sales' or 'units'
+};
 
 export default OverviewChart;

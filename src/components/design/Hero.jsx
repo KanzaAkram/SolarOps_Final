@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { MouseParallax } from "react-just-parallax";
+import PropTypes from "prop-types";
 
 import PlusSvg from "../../assets/svg/PlusSvg";
 
@@ -98,4 +99,11 @@ export const BackgroundCircles = ({ parallaxRef }) => {
       </MouseParallax>
     </div>
   );
+};
+
+BackgroundCircles.propTypes = {
+  parallaxRef: PropTypes.oneOfType([
+    PropTypes.func,
+    PropTypes.shape({ current: PropTypes.instanceOf(Element) }),
+  ]),
 };

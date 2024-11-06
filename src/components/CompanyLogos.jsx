@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 const CompanyLogos = ({ className }) => {
   return (
     <div className={className}>
@@ -17,6 +18,10 @@ const CompanyLogos = ({ className }) => {
       </ul> */}
     </div>
   );
+};
+
+CompanyLogos.propTypes = {
+  className: PropTypes.string, // Expect className to be a string
 };
 
 export default CompanyLogos;

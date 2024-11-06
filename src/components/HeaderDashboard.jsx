@@ -1,5 +1,6 @@
 /* eslint-disable react/prop-types */
 import { Typography, Box, useTheme } from "@mui/material";
+import PropTypes from "prop-types";
 
 function HeaderDashboard({ title, subtitle }) {
   const theme = useTheme();
@@ -19,5 +20,10 @@ function HeaderDashboard({ title, subtitle }) {
     </Box>
   );
 }
+
+HeaderDashboard.propTypes = {
+  title: PropTypes.string.isRequired,  // title must be a string and is required
+  subtitle: PropTypes.string.isRequired,  // subtitle must be a string and is required
+};
 
 export default HeaderDashboard;

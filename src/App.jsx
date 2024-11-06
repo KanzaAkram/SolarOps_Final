@@ -17,6 +17,7 @@ import Footer from "./components/Footer";
 import Header from "./components/Header";
 import Hero from "./components/Hero";
 import Services from "./components/Services";
+import PropTypes from "prop-types";
 
 // Import dashboard components
 import Layout from "./scenes/Layout";
@@ -79,7 +80,10 @@ const ProtectedRoute = ({ element, redirectPath = "/login" }) => {
   return element;
 };
 
-
+ProtectedRoute.propTypes = {
+  element: PropTypes.element.isRequired, // Validate that element is a React element
+  redirectPath: PropTypes.string,
+};
 
 const router = createBrowserRouter([
   {

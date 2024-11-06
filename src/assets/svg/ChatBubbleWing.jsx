@@ -1,3 +1,5 @@
+import PropTypes from "prop-types";
+
 const ChatBubbleWing = ({ className, pathClassName }) => {
   return (
     <svg
@@ -13,5 +15,11 @@ const ChatBubbleWing = ({ className, pathClassName }) => {
     </svg>
   );
 };
+
+ChatBubbleWing.propTypes = {
+  className: PropTypes.string,
+  pathClassName: PropTypes.string,
+};
+
 
 export default ChatBubbleWing;

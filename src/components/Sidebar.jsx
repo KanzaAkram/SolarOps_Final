@@ -1,4 +1,5 @@
 /* eslint-disable react/prop-types */
+import PropTypes from "prop-types";
 import {
   Box,
   Divider,
@@ -225,6 +226,17 @@ function Sidebar({
     </Box>
   );
 }
+
+Sidebar.propTypes = {
+  user: PropTypes.shape({
+    name: PropTypes.string.isRequired,
+    occupation: PropTypes.string.isRequired,
+  }).isRequired,
+  drawerWidth: PropTypes.number.isRequired,
+  isSidebarOpen: PropTypes.bool.isRequired,
+  setIsSidebarOpen: PropTypes.func.isRequired,
+  isNonMobile: PropTypes.bool.isRequired,
+};
 
 export default Sidebar;
 

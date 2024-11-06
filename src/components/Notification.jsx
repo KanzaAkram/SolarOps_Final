@@ -1,5 +1,6 @@
 import { notification1 } from "../assets";
 import { notificationImages } from "../constants";
+import PropTypes from "prop-types";
 
 const Notification = ({ className, title }) => {
   return (
@@ -41,6 +42,11 @@ const Notification = ({ className, title }) => {
       </div>
     </div>
   );
+};
+
+Notification.propTypes = {
+  className: PropTypes.string,
+  title: PropTypes.string.isRequired, // title is required
 };
 
 export default Notification;

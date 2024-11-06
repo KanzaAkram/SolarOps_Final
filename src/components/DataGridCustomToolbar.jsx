@@ -8,6 +8,7 @@ import {
   GridToolbarColumnsButton,
 } from "@mui/x-data-grid";
 import FlexBetween from "./FlexBetween";
+import PropTypes from "prop-types";
 
 function DataGridCustomToolbar({ searchInput, setSearchInput, setSearch }) {
   return (
@@ -43,5 +44,12 @@ function DataGridCustomToolbar({ searchInput, setSearchInput, setSearch }) {
     </GridToolbarContainer>
   );
 }
+
+DataGridCustomToolbar.propTypes = {
+  searchInput: PropTypes.string.isRequired,       // searchInput should be a string
+  setSearchInput: PropTypes.func.isRequired,      // setSearchInput should be a function
+  setSearch: PropTypes.func.isRequired,           // setSearch should be a function
+};
+
 
 export default DataGridCustomToolbar;

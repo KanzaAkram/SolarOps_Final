@@ -3,6 +3,7 @@ import styled from "styled-components";
 import "./Fault.css";
 import image1 from "../assets/fault/image-1 (1).jpeg";
 import image3 from "../assets/fault/image-3.jpg";
+import PropTypes from "prop-types";
 import { fetchFaultPrediction } from "../helper/helper"; // Ensure this path is correct
 
 const Container = styled.div`
@@ -309,6 +310,14 @@ const Fault = () => {
       )}
     </Container>
   );
+};
+
+PredictionCard.propTypes = {
+  image: PropTypes.string.isRequired,
+  faultType: PropTypes.string.isRequired,
+  confidence: PropTypes.number.isRequired,
+  recommendations: PropTypes.arrayOf(PropTypes.string).isRequired,
+  tips: PropTypes.arrayOf(PropTypes.string).isRequired,
 };
 
 export default Fault;

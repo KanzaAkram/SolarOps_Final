@@ -1,4 +1,5 @@
 import TagLine from "./Tagline";
+import PropTypes from "prop-types";
 
 const Heading = ({ className, title, text, tag }) => {
   return (
@@ -10,6 +11,13 @@ const Heading = ({ className, title, text, tag }) => {
       {text && <p className="body-2 mt-4 text-n-4">{text}</p>}
     </div>
   );
+};
+
+Heading.propTypes = {
+  className: PropTypes.string,  // className is optional and should be a string
+  title: PropTypes.string,      // title is optional and should be a string
+  text: PropTypes.string,       // text is optional and should be a string
+  tag: PropTypes.string,        // tag is optional and should be a string
 };
 
 export default Heading;

@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 import {
   LineChart,
   Line,
@@ -179,6 +180,23 @@ const WeatherCharts = ({ selectedData }) => {
 
     </div>
   );
+};
+
+WeatherCharts.propTypes = {
+  selectedData: PropTypes.arrayOf(
+    PropTypes.shape({
+      dt_txt: PropTypes.string.isRequired,
+      main: PropTypes.shape({
+        temp: PropTypes.number.isRequired,
+        humidity: PropTypes.number.isRequired,
+        pressure: PropTypes.number.isRequired,
+      }).isRequired,
+      wind: PropTypes.shape({
+        speed: PropTypes.number.isRequired,
+      }).isRequired,
+      visibility: PropTypes.number.isRequired,
+    })
+  ).isRequired,
 };
 
 export default WeatherCharts;
