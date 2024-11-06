@@ -25,7 +25,7 @@ const Collaboration = () => {
 
           <ul className="max-w-[22rem] mb-10 md:mb-14">
             {collabContent.map((item) => (
-              <li role="button"
+              <li 
                 className="mb-3 py-3 cursor-pointer transform transition-transform duration-200 hover:scale-105 hover:shadow-[0px_0px_20px_5px_rgba(255,165,0,0.25),_0px_0px_10px_2px_rgba(255,140,0,0.25)] rounded-md"
                 key={item.id}
                 onClick={() => toggleExpand(item.id)}
