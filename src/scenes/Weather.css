@@ -75,28 +75,6 @@ input{
         gap: 0.5rem; /* Optional gap between forecast items */
       }
 
-
-/*.content{
-  color: white;
-  width: 90%;
-  display: grid;
-  grid-template-columns: 65% auto;
-  grid-template-rows: 10rem 12rem 12rem 10rem;
-  grid-gap: 1rem;
-  margin-top: 1.2rem;
-}
-
-.temp{
-  font-size: 3rem;
-  font-weight: 600;
-  color: white;
-}
-
-.city{
-  font-size: 2rem;
-  font-weight: 600;
-}*/
-
 .center{
   display: flex;
   justify-content: center;

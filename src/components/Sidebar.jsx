@@ -14,7 +14,6 @@ import {
 } from "@mui/material";
 
 import {
-  SettingsOutlined,
   ChevronLeft,
   ChevronRightOutlined,
   PictureAsPdf,
@@ -26,7 +25,6 @@ import { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import FlexBetween from "./FlexBetween";
 import profileImage from "@/assets/avatar.svg";
-import Visualizations from "@/scenes/Visualizations";
 
 const navItems = [
   {

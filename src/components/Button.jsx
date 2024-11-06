@@ -1,5 +1,4 @@
 import ButtonSvg from "../assets/svg/ButtonSvg";
-import rightArrow from "../assets/svg/right-arrow-svgrepo-com.svg";
 
 const Button = ({ className, href, onClick, children, px, white }) => {
   const classes = `

@@ -1,8 +1,8 @@
-import React, {useState, useEffect} from "react";
+import React from "react";
 import { useFormik } from "formik";
 import toast, { Toaster } from 'react-hot-toast';
-import { brainwave, brainwaveWhiteSymbol } from "@/assets";
-import { useDispatch, useSelector } from "react-redux";
+import { brainwaveWhiteSymbol } from "@/assets";
+import { useDispatch } from "react-redux";
 import { login } from '../../store/authSlice';
 
 import { useNavigate } from 'react-router-dom';

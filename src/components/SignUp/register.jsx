@@ -5,9 +5,7 @@ import { brainwave } from "@/assets";
 import { useNavigate } from "react-router-dom";
 import { SignUp } from "../../helper/helper";
 import * as Yup from "yup";
-import { useDispatch } from 'react-redux';
 const Register = () => {
-  const dispatch = useDispatch(); 
   const validationSchema = Yup.object({
     organizationName: Yup.string().required("Organization Name is required"),
     email: Yup.string()
@@ -18,7 +16,7 @@ const Register = () => {
       .required("Password is required")
       .min(8, "Password must be at least 8 characters long")
       .matches(/[A-Z]/, "Password must contain at least one uppercase letter")
-      .matches(/[0-9]/, "Password must contain at least one number"),
+      .matches(/\d/, "Password must contain at least one number"),
   });
 
   const navigate = useNavigate();

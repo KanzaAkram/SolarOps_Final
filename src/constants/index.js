@@ -1,8 +1,4 @@
 import {
-  benefitIcon1,
-  benefitIcon2,
-  benefitIcon3,
-  benefitIcon4,
   benefitImage2,
   chromecast,
   disc02,
@@ -29,7 +25,6 @@ import {
   sliders04,
   telegram,
   twitter,
-  yourlogo,
 } from "../assets";
 
 export const navigation = [

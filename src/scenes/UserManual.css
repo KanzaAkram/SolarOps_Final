@@ -109,7 +109,6 @@ h2 {
 
 /* Weather image styling */
 .weather-image {
-  /* margin-top: 10px; */
   display: flex;
   justify-content: center;
 }

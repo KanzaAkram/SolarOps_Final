@@ -1,6 +1,5 @@
 import Axios from "axios";
 Axios.defaults.baseURL = import.meta.env.VITE_REACT_APP_SERVER_DOMAIN;
-import { useDispatch } from 'react-redux';
 
 
 export async function SignUp(credentials) {

@@ -3,7 +3,6 @@ import { useTheme, Box, Typography, useMediaQuery } from "@mui/material";
 import { PieChart, Pie, Cell, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
-import useLandbot from '../../src/useLandbot';
 
 // Sample data (you can update this with real data)
 const data = {

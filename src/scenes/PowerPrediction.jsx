@@ -23,12 +23,10 @@ const PowerPrediction = () => {
   const [prediction, setPrediction] = useState(null);
   const [predictionData, setPredictionData] = useState(null);
   const [accessToken, setAccessToken] = useState(null);
-  const [heatmapData, setHeatmapData] = useState([]);
   const [nearbyLocations, setNearbyLocations] = useState([]); 
   const [nearbyLocationsData, setNearbyLocationsData] = useState([]);
   const [isDataReadyToShow, setIsDataReadyToShow] = useState(false); 
   const [NearbypredictionData, setNearbypredictionData] = useState(null);
-  const [Nearbyprediction, setNearbyprediction] = useState([]);
   const [nearbyalocations, setnearbyalocations] = useState([]);
   const [showPrediction, setShowPrediction] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
@@ -593,9 +591,6 @@ const PowerPrediction = () => {
       setHigherPowerLocations(higherPowerLocs); 
       console.log("Locations with higher power generation:", higherPowerLocs);
       setIsDataReadyToShow(true);
-      if(higherPowerLocs.length==0){
-        
-      }
 
       updateMapMarkers(higherPowerLocs);
       speakMessage("Nearby potential power recommendations are generated.");
