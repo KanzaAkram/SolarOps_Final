@@ -18,7 +18,7 @@ const UploadButton = styled.label.attrs({ className: 'specific-upload' })`
   display: inline-block;
   padding: 0.8rem 1.5rem;
   color: black;
-  background-color: #ffd966;
+  background-color: #FFA500;
   font-weight: bold;
   border-radius: 8px;
   cursor: pointer;
@@ -27,7 +27,7 @@ const UploadButton = styled.label.attrs({ className: 'specific-upload' })`
   box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
 
   &:hover {
-    background-color: #ff4500;
+    background-color: #FFA500;
     color: white;
     transform: scale(1.05);
   }
@@ -46,7 +46,7 @@ const SubmitButton = styled.button`
   box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
 
   &:hover {
-    background-color: #ff4500;
+    background-color: #FFA500;
     transform: scale(1.05);
   }
 `;
@@ -61,7 +61,7 @@ const Card = styled.div`
   width: 90%;
   max-width: 600px;
   min-height: 400px;
-  background-color: #ffd966;
+  background-color: #FFA500;
   border-radius: 10px;
   box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.2);
   text-align: center;
@@ -100,7 +100,7 @@ const Confidence = styled.p`
 const Recommendations = styled.div`
   text-align: left;
   margin-top: 1rem;
-  color: #ff4500;
+  color: black;
   font-weight: bold;
   font-size: 1.2rem;
 `;
@@ -117,7 +117,7 @@ const ListItem = styled.li`
   color: black;
 `;
 const Heading = styled.h1`
-  color: orange;
+  color: white;
   font-weight: bold;
   font-size: 2.5rem;
   margin-bottom: 1rem;
@@ -161,14 +161,14 @@ const StepImage = styled.div`
   }
 
   p {
-    color: orange;
+    color: white;
     font-weight: bold;
     margin-top: 0.5rem;
   }
 `;
 
 const Arrow = styled.div`
-  color: orange;
+  color: white;
   font-size: 2rem;
   margin: 0 1rem;
   transform: rotate(90deg);

@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import { benefits } from "../constants";
 import Heading from "./Heading";
 import Section from "./Section";

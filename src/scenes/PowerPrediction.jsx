@@ -823,7 +823,7 @@ const PowerPrediction = () => {
     </div>
   )}
    
-   {isDataReadyToShow && higherPowerLocations.length==0 && showPrediction && prediction && <p className="bg-white text-red-500 shadow-xl px-5 py-10 font-extrabold rounded-md">No nearby locations found with potential power found. The current location with the predicted power {prediction.predicted_power} kW is recommended.</p>}
+   {isDataReadyToShow && higherPowerLocations.length==0 && showPrediction && prediction && <p className="bg-white text-red-500 shadow-xl px-5 py-10 font-extrabold rounded-md">No nearby locations with potential power found. The current location with the predicted power {prediction.predicted_power} kW is recommended.</p>}
 
     <MapContainer
       className="flex items-center justify-center mt-6 mb-6"
