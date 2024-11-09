@@ -22,7 +22,6 @@ import {
 
 import { setMode } from "@/state";
 import FlexBetween from "./FlexBetween";
-import profileImage from "@/assets/avatar.svg";
 import {logout} from "../store/authSlice";
 import PropTypes from "prop-types";
 
@@ -96,15 +95,6 @@ function Navbar({ user, isSidebarOpen, setIsSidebarOpen }) {
                 gap: "1rem",
               }}
             >
-              <Box
-                component="img"
-                alt="profile"
-                src={profileImage}
-                height="32px"
-                width="32px"
-                borderRadius="50%"
-                sx={{ objectFit: "cover" }}
-              />
               <Box textAlign="left">
                 <Typography
                   fontWeight="bold"

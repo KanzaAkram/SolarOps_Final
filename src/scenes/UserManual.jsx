@@ -1,5 +1,4 @@
 import React, { useRef } from 'react';
-import PropTypes from 'prop-types';
 
 const TextToSpeech = ({ text, children }) => {
   const utteranceRef = useRef(null);
@@ -31,12 +30,12 @@ const TextToSpeech = ({ text, children }) => {
 const UserManual = () => {
   return (
 
-        <div className="w-full h-full pl-10">
+        <div className="bg-customDark w-full h-full pl-10">
         
           <div className="grid grid-cols-2 gap-x-6 gap-y-7">
 
         <TextToSpeech text="Welcome to the Solar Panel Installation and Management Manual. This section provides grid operators with essential guidance for optimizing solar grid placement and management. By leveraging the latest industry standards and best practices, you can enhance energy output and ensure the efficient operation of your solar installations.">
-          <div className="bg-[#FFE599] text-[#101624] p-6 mt-4 rounded-xl w-full h-[470px]">
+          <div className="bg-yellow-200 text-[#101624] p-6 mt-4 rounded-xl w-full h-[470px] transition-transform transform hover:scale-105">
               <h1 className='text-5xl font-bold'>Introduction</h1>
               <br />
               <p>
@@ -51,7 +50,7 @@ const UserManual = () => {
 
           <TextToSpeech text="Site Assessment Checklist: Location Analysis:Evaluate geographical features that may obstruct sunlight (e.g., trees, buildings), Shading Assessment:Identify potential shading sources during different times of the day and seasons, Soil Condition:Assess soil type and stability for mounting structures, Accessibility: Ensure the site is accessible for installation and maintenance, Regulatory Compliance:Check local regulations and obtain necessary permits">
 
-            <div className="bg-[#FFE599] text-[#101624] p-6 rounded-xl w-[600px] h-[1000px] row-span-2 mt-4">
+            <div className="bg-yellow-200 text-[#101624] p-6 rounded-xl w-[600px] h-[1000px] row-span-2 mt-4 transition-transform transform hover:scale-105">
               <h1 className='text-5xl font-bold'>Site Assessment Checklist</h1>
               <br />
             
@@ -69,7 +68,7 @@ const UserManual = () => {
 
           <TextToSpeech text="Regular Inspections:Conduct periodic visual inspections of solar panels to identify dirt accumulation, debris, or damage,Cleaning Guidelines: Clean solar panels using soft brushes or cloths and non-abrasive cleaning solutions to prevent scratches,Performance Monitoring:Utilize SolarOps' visualization tools to monitor energy output and identify any anomalies in performance">
 
-            <div  className="bg-[#FFE599] text-[#101624] p-6 rounded-xl w-[610px] h-[500px] absolute top-[580px] ">
+            <div  className="bg-yellow-200 text-[#101624] p-6 rounded-xl w-[610px] h-[500px] absolute top-[580px] transition-transform transform hover:scale-105 ">
               <h1 className='text-5xl font-bold'>Maintenance Tips</h1>
               <br />
               <ul className="list-disc pl-2 ">
@@ -87,7 +86,7 @@ const UserManual = () => {
           <div className="grid grid-cols-3 gap-x-6 gap-y-10 mt-5 relative">
 
           <TextToSpeech text="The content of this manual will be periodically updated to reflect new industry standards, technological advancements, and best practices. Stay informed by checking back regularly for the latest information">
-            <div className="bg-[#FFE599] text-[#101624] p-6 rounded-xl w-[500px] h-[600px]">
+            <div className="bg-yellow-200 text-[#101624] p-6 rounded-xl w-[500px] h-[600px] transition-transform transform hover:scale-105">
               <h1 className='text-5xl font-bold'>Update And Resources</h1>
               <br />
               <p>
@@ -102,7 +101,7 @@ const UserManual = () => {
                 Range, 1000 to 1500 kWh/year per kW, common in areas with moderate solar irradiance (4 to 5 kWh/m²/day),High Power Prediction Range,
               Range,1500 to 2500 kWh/year per kW, characteristic of areas with high solar irradiance (5 to 7 kWh/m²/day),Very High Power Prediction Range,
                 Range,2500 to 7000 kWh/year per kW, found in exceptionally sunny regions with peak solar irradiance (above 7 kWh/m²/day)"> 
-            <div className="bg-[#FFE599] text-[#101624] p-6 rounded-xl w-[710px] h-[600px] absolute left-[520px]">
+            <div className="bg-yellow-200 text-[#101624] p-6 rounded-xl w-[710px] h-[600px] absolute left-[520px] transition-transform transform hover:scale-105">
               <h1 className='text-5xl font-bold'>Power Prediction Ranges</h1>
               <br />
               <ul className="list-disc pl-2 ">
@@ -122,13 +121,10 @@ const UserManual = () => {
 
           </div>
       </div>
+
+
    
   );
-};
-
-TextToSpeech.propTypes = {
-  text: PropTypes.string.isRequired,
-  children: PropTypes.node.isRequired,
 };
 
 export default UserManual;

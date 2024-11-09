@@ -25,7 +25,7 @@ import {
 import { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import FlexBetween from "./FlexBetween";
-import profileImage from "@/assets/avatar.svg";
+
 
 const navItems = [
   {
@@ -189,15 +189,7 @@ function Sidebar({
               gap="1rem"
               m="1.5rem 2rem 1.5rem 3rem"
             >
-              <Box
-                component="img"
-                alt="profile"
-                src={profileImage}
-                height="40px"
-                width="40px"
-                borderRadius="50%"
-                sx={{ objectFit: "cover" }}
-              />
+            
               <Box textAlign="left">
                 <Typography
                   fontWeight="bold"

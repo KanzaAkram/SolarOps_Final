@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import PropTypes from 'prop-types';
 import {
   LineChart,
   Line,
@@ -11,6 +10,7 @@ import {
   ResponsiveContainer,
 } from 'recharts';
 import './Weather.css';
+import InfoCard from "./InfoCard.jsx";
 
 // Custom Tooltip Component
 const CustomTooltip = ({ active, payload }) => {
@@ -48,11 +48,19 @@ const WeatherCharts = ({ selectedData }) => {
     name: 'Temperature (°C)',
   }));
 
+  const temperatures = temperatureData.map(data => data.value);
+  const minTemp = Math.min(...temperatures);
+  const maxTemp = Math.max(...temperatures);
+
   const windSpeedData = selectedData.map(item => ({
     time: item.dt_txt.slice(11, 16),
     value: item.wind.speed,
     name: 'Wind Speed (m/s)',
   }));
+
+  const wind_speed = windSpeedData.map(data => data.value);
+  const minWind = Math.min(...wind_speed);
+  const maxWind = Math.max(...wind_speed);
 
   const humidityData = selectedData.map(item => ({
     time: item.dt_txt.slice(11, 16),
@@ -60,11 +68,20 @@ const WeatherCharts = ({ selectedData }) => {
     name: 'Humidity (%)',
   }));
 
+  const humidity = humidityData.map(data => data.value);
+  const minHumidity = Math.min(...humidity);
+  const maxHumidity = Math.max(...humidity);
+
   const pressureData = selectedData.map(item => ({
     time: item.dt_txt.slice(11, 16),
     value: item.main.pressure,
     name: 'Pressure (mb)',
   }));
+
+  const pressure = pressureData.map(data => data.value);
+  const minPressure = Math.min(...pressure);
+  const maxPressure = Math.max(...pressure);
+
 
   const visibilityData = selectedData.map(item => ({
     time: item.dt_txt.slice(11, 16),
@@ -72,131 +89,138 @@ const WeatherCharts = ({ selectedData }) => {
     name: 'Visibility (m)',
   }));
 
+  const visibility = visibilityData.map(data => data.value);
+  const minVisibility = Math.min(...visibility);
+  const maxVisibility = Math.max(...visibility);
+
+
   const handleMouseEnter = (name) => {
     setCurrentParameter(name);
   };
-  const speakText = (text) => {
-    const utterance = new SpeechSynthesisUtterance(text);
-    window.speechSynthesis.speak(utterance);
-  };
-  const handleMouseEnter2 = (name) => {
-    setCurrentParameter(name);
-    speakText(`Displaying ${name}`);
-  };
+
   return (
     <div className='text-lg'>
-      <h2 className="text-4xl font-bold text-center mb-3 text-yellow-100">Weather Charts</h2>
+      <h2 className="text-4xl font-bold text-center mb-3 text-yellow-100">Weather Charts At 3-Hour Time Intervals</h2>
       <p className="text-center text-xl font-bold mb-5 text-gray-300">{date}</p>
+      <div className="space-y-12">
 
-      <div className="flex justify-center items-center">
-        <ResponsiveContainer width="70%" height={300}>
-        <h3 className='my-4 font-bold' onMouseEnter={() => handleMouseEnter2('Temperature ')}>Temperature (°C)</h3>
-
+      <div className="flex items-center">
+      {/* Line Chart Container */}
+      <div className="w-2/3">
+        <ResponsiveContainer width="100%" height={300}>
+          <h3 className="my-4 font-bold">Temperature (°C)</h3>
           <LineChart data={temperatureData}>
             <CartesianGrid strokeDasharray="3 3" />
             <XAxis dataKey="time" />
             <YAxis />
-            <Tooltip 
-              content={<CustomTooltip />} 
-              onMouseEnter={() => handleMouseEnter('Temperature (°C)')} // Set the parameter name
-            />
+            <Tooltip content={<CustomTooltip />} />
             <Legend />
             <Line type="monotone" dataKey="value" stroke="#ff7300" />
           </LineChart>
         </ResponsiveContainer>
       </div>
 
-      <div className="flex justify-center items-center mt-12">
-        <ResponsiveContainer width="70%" height={300}>
-        <h3 className='my-4 font-bold' onMouseEnter={() => handleMouseEnter2('Wind Speed ')}>Wind Speed (m/s)</h3>
+      {/* Info Cards for different parameters */}
+      <div className="w-1/4 ml-14">
+        <InfoCard title="Temperature" description={`[
+    Min: ${minTemp}°C - Lower temperatures boost solar panel efficiency by reducing overheating.,
+    Max: ${maxTemp}°C - Higher temperatures can decrease solar panel efficiency, reducing energy output.
+  ]`}/>
+      </div>
+    </div>
 
-          <LineChart data={windSpeedData}>
-            <CartesianGrid strokeDasharray="3 3" />
-            <XAxis dataKey="time" />
-            <YAxis />
-            <Tooltip 
-              content={<CustomTooltip />} 
-              onMouseEnter={() => handleMouseEnter('Wind Speed (m/s)')} 
-            />
-            <Legend />
-            <Line type="monotone" dataKey="value" stroke="#387908" />
-          </LineChart>
-        </ResponsiveContainer>
+
+
+<div className="flex items-center">
+        <div className="w-2/3">
+          <ResponsiveContainer width="100%" height={300}>
+            <h3 className="my-4 font-bold">Wind Speed (m/s)</h3>
+            <LineChart data={windSpeedData}>
+              <CartesianGrid strokeDasharray="3 3" />
+              <XAxis dataKey="time" />
+              <YAxis />
+              <Tooltip content={<CustomTooltip />} />
+              <Legend />
+              <Line type="monotone" dataKey="value" stroke="#387908" />
+            </LineChart>
+          </ResponsiveContainer>
+        </div>
+        <div className="w-1/4 ml-14">
+          <InfoCard title="Wind Speed" description={`[
+    Min: ${minWind}m/s - Moderate wind speed cool panels, reducing overheating and improving efficiency.,
+    Max: ${maxWind}m/s - Higher wind speeds can reduce panel efficiency by increasing dust.
+  ]`} />
+        </div>
       </div>
 
-      <div className="flex justify-center items-center mt-12">
-        <ResponsiveContainer width="70%" height={300}>
-        <h3 className='my-4 font-bold' onMouseEnter={() => handleMouseEnter2('Humidity ')}>Humidity (%)</h3>
-
-          <LineChart data={humidityData}>
-            <CartesianGrid strokeDasharray="3 3" />
-            <XAxis dataKey="time" />
-            <YAxis />
-            <Tooltip 
-              content={<CustomTooltip />} 
-              onMouseEnter={() => handleMouseEnter('Humidity (%)')} 
-            />
-            <Legend />
-            <Line type="monotone" dataKey="value" stroke="#8884d8" />
-          </LineChart>
-        </ResponsiveContainer>
+      <div className="flex items-center">
+        <div className="w-2/3">
+          <ResponsiveContainer width="100%" height={300}>
+            <h3 className="my-4 font-bold">Humidity (%)</h3>
+            <LineChart data={humidityData}>
+              <CartesianGrid strokeDasharray="3 3" />
+              <XAxis dataKey="time" />
+              <YAxis />
+              <Tooltip content={<CustomTooltip />} />
+              <Legend />
+              <Line type="monotone" dataKey="value" stroke="#8884d8" />
+            </LineChart>
+          </ResponsiveContainer>
+        </div>
+        <div className="w-1/4 ml-14">
+          <InfoCard title="Humidity" description={`[
+    Min: ${minHumidity}% - Low humidity levels allow more direct sunlight, improving solar panel efficiency.,
+    Max: ${maxHumidity}% - High humidity can reduce solar output by increasing haze and reducing sunlight.
+  ]`} />
+        </div>
       </div>
 
-      <div className="flex justify-center items-center mt-12">
-        <ResponsiveContainer width="70%" height={300}>
-        <h3 className='my-4 font-bold' onMouseEnter={() => handleMouseEnter2('Pressure ')}>Pressure (mb)</h3>
-
-          <LineChart data={pressureData}>
-            <CartesianGrid strokeDasharray="3 3" />
-            <XAxis dataKey="time" />
-            <YAxis />
-            <Tooltip 
-              content={<CustomTooltip />} 
-              onMouseEnter={() => handleMouseEnter('Pressure (mb)')} 
-            />
-            <Legend />
-            <Line type="monotone" dataKey="value" stroke="#ffc658" />
-          </LineChart>
-        </ResponsiveContainer>
+      <div className="flex items-center">
+        <div className="w-2/3">
+          <ResponsiveContainer width="100%" height={300}>
+            <h3 className="my-4 font-bold">Pressure (mb)</h3>
+            <LineChart data={pressureData}>
+              <CartesianGrid strokeDasharray="3 3" />
+              <XAxis dataKey="time" />
+              <YAxis />
+              <Tooltip content={<CustomTooltip />} />
+              <Legend />
+              <Line type="monotone" dataKey="value" stroke="#ffc658" />
+            </LineChart>
+          </ResponsiveContainer>
+        </div>
+        <div className="w-1/4 ml-14">
+          <InfoCard title="Pressure" description={`[
+    Min: ${minPressure}mb - low pressure typically leads to cloudier conditions, reducing sunlight and decreasing solar efficiency.,
+    Max: ${maxPressure}mb - High pressure often brings clear skies, which boosts solar power output.
+  ]`} />
+        </div>
       </div>
 
-      <div className="flex justify-center items-center mt-12">
-        <ResponsiveContainer width="70%" height={300}>
-        <h3 className='my-4 font-bold' onMouseEnter={() => handleMouseEnter2('Visibility ')}>Visibility (m)</h3>
-
-          <LineChart data={visibilityData}>
-            <CartesianGrid strokeDasharray="3 3" />
-            <XAxis dataKey="time" />
-            <YAxis />
-            <Tooltip 
-              content={<CustomTooltip />} 
-              onMouseEnter={() => handleMouseEnter('Visibility (m)')} 
-            />
-            <Legend />
-            <Line type="monotone" dataKey="value" stroke="#ff7300" />
-          </LineChart>
-        </ResponsiveContainer>
+      <div className="flex items-center">
+        <div className="w-2/3">
+          <ResponsiveContainer width="100%" height={300}>
+            <h3 className="my-4 font-bold">Visibility (m)</h3>
+            <LineChart data={visibilityData}>
+              <CartesianGrid strokeDasharray="3 3" />
+              <XAxis dataKey="time" />
+              <YAxis />
+              <Tooltip content={<CustomTooltip />} />
+              <Legend />
+              <Line type="monotone" dataKey="value" stroke="#ff7300" />
+            </LineChart>
+          </ResponsiveContainer>
+        </div>
+        <div className="w-1/4 ml-14">
+          <InfoCard title="Visibility" description={`[
+    Min: ${minVisibility}m - Low visibility, often due to fog or haze, reduces sunlight, thus lowering solar energy production.,
+    Max: ${maxVisibility}m - High visibility generally indicates clear skies, allowing maximum sunlight for solar panels, enhancing power output.
+  ]`} />
+        </div>
       </div>
-
+    </div>
     </div>
   );
-};
-
-WeatherCharts.propTypes = {
-  selectedData: PropTypes.arrayOf(
-    PropTypes.shape({
-      dt_txt: PropTypes.string.isRequired,
-      main: PropTypes.shape({
-        temp: PropTypes.number.isRequired,
-        humidity: PropTypes.number.isRequired,
-        pressure: PropTypes.number.isRequired,
-      }).isRequired,
-      wind: PropTypes.shape({
-        speed: PropTypes.number.isRequired,
-      }).isRequired,
-      visibility: PropTypes.number.isRequired,
-    })
-  ).isRequired,
 };
 
 export default WeatherCharts;
