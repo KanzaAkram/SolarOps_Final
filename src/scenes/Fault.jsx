@@ -18,7 +18,7 @@ const UploadButton = styled.label.attrs({ className: 'specific-upload' })`
   display: inline-block;
   padding: 0.8rem 1.5rem;
   color: black;
-  background-color: #FFA500;
+  background-color: #D97706;
   font-weight: bold;
   border-radius: 8px;
   cursor: pointer;
@@ -27,7 +27,7 @@ const UploadButton = styled.label.attrs({ className: 'specific-upload' })`
   box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
 
   &:hover {
-    background-color: #FFA500;
+    background-color: #D97706;
     color: white;
     transform: scale(1.05);
   }
@@ -61,7 +61,7 @@ const Card = styled.div`
   width: 90%;
   max-width: 600px;
   min-height: 400px;
-  background-color: #FFA500;
+  background-color: #F8DF97;
   border-radius: 10px;
   box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.2);
   text-align: center;

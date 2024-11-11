@@ -42,8 +42,8 @@ const PowerPrediction = () => {
 
 
   const fetchToken = async () => {
-    const username = "nustuniversity_khan_sana";
-    const password = "19PU5oCRwg";
+    const username = "nustuniversity_ali_rukhsana";
+    const password = "9jwN4ru2DJ";
     try {
       const response = await axios.get(
         "https://login.meteomatics.com/api/v1/token",
@@ -177,7 +177,7 @@ const PowerPrediction = () => {
 
       const windGustResponse = await axios.get(
         `https://api.meteomatics.com/${date}T${
-          currentHour - 1
+          currentHour
         }:00:00Z/wind_gusts_10m_3h:ms,sun_elevation:d,sun_azimuth:d/${lat},${lon}/json`,
         {
           headers: {
@@ -188,8 +188,7 @@ const PowerPrediction = () => {
 
       const data2 = windGustResponse.data;
       const wind_url = `https://api.meteomatics.com/${date}T${
-        currentHour - 1
-      }:00:00Z/wind_gusts_10m_3h:ms,sun_azimuth:d,sun_elevation:d/${lat},${lon}/json`;
+        currentHour}:00:00Z/wind_gusts_10m_3h:ms,sun_azimuth:d,sun_elevation:d/${lat},${lon}/json`;
       console.log(wind_url);
       console.log(data2);
 
@@ -576,7 +575,7 @@ const PowerPrediction = () => {
         const predictionResponse = await fetchPrediction(locationData);
         nearbyPredictionData.push(predictionResponse);
 
-        if (predictionResponse.predicted_power > userLocationPredictedPower) {
+        if (predictionResponse.predicted_power >= userLocationPredictedPower) {
           const correspondingLocation = nearbyalocations[i];
           higherPowerLocs.push({
             ...predictionResponse,
@@ -641,7 +640,7 @@ const PowerPrediction = () => {
       style={{
         width: "80% !important",
       }}>
-        <h2 className="font-bold my-2">Enter Your Location</h2>
+        <h2 className="font-bold my-2 text-3xl">Enter Your Location</h2>
         <textarea
           ref={textareaRef}
           placeholder="Type your location"
