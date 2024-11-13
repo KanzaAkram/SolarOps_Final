@@ -4,10 +4,10 @@ const bcrypt = require('bcrypt');
 async function register(req, res) {
   try {
     const { organizationName, email, password, location } = req.body;
-
+    console.log("Received registration data:", req.body);
     const existingEmail = await db.fetchData(email);
-
-    if (existingEmail.length !== 0) {
+    
+    if (existingEmail) {
       return res.status(400).json({ success: false, error: "Email already exists" });
     }
 
@@ -38,20 +38,20 @@ async function login(req, res) {
       const user = await db.fetchDataByEmailAndOrganization(email, organizationName);
       console.log("User fetched:", user);
       
-      if (user.length === 0) {
+      if (!user) {
           return res.status(404).json({ success: false, error: "User not found" });
       }
 
-      const isPasswordValid = await bcrypt.compare(password, user[0].password);
+      const isPasswordValid = await bcrypt.compare(password, user.password);
       if (!isPasswordValid) {
           return res.status(400).json({ success: false, error: "Invalid credentials" });
       }
 
-      console.log("Organization Name:", user[0].organizationName); 
+      console.log("Organization Name:", organizationName); 
       return res.status(200).json({
           success: true,
           msg: "Login successful",
-          user: { email: user[0].email, organizationName: user[0].organizationName }
+          user: { email: email, organizationName: organizationName }
       });
   } catch (error) {
       console.error("Error during login:", error); 
@@ -67,7 +67,7 @@ async function addLocation(req, res) {
           return res.status(400).json({ success: false, error: "Location name, email, lat, and lng are required" });
       }
 
-      const organization_id = await db.fetchOrganizationidByEmail(email);
+      const organization_id = await db.fetchOrganizationIdByEmail(email);
 
       const result = await db.insertLocation({ organization_id, location_name, latitude: latitude, longitude: longitude });
 
@@ -89,7 +89,7 @@ async function getUserLocations(req, res) {
       if (!email) {
           return res.status(400).json({ success: false, error: "Email is required" });
       }
-      const organizationId = await db.fetchOrganizationidByEmail(email);
+      const organizationId = await db.fetchOrganizationIdByEmail(email);
       if (!organizationId) {
           return res.status(404).json({ success: false, error: "Organization not found" });
       }
@@ -119,7 +119,7 @@ async function deleteLocation(req, res) {
       
 
       // Fetch organization ID
-      const organizationId = await db.fetchOrganizationidByEmail(email);
+      const organizationId = await db.fetchOrganizationIdByEmail(email);
       if (!organizationId) {
           return res.status(404).json({ success: false, error: "Organization not found" });
       }

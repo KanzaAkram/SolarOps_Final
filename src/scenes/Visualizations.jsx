@@ -27,7 +27,7 @@ const Visualizations = () => {
     };
 
     fetchSavedLocations();
-}, []); // Empty dependency array means this runs once on moun
+},  [savedLocations]); // Empty dependency array means this runs once on moun
 
   const adjustTextareaHeight = () => {
     if (textareaRef.current) {
@@ -60,6 +60,7 @@ const Visualizations = () => {
   const confirmDeleteLocation = async () => {
     try {
       await DeleteLocation(locationToDelete);
+      // Remove the deleted location from the savedLocations state
       setSavedLocations((prevLocations) =>
         prevLocations.filter((loc) => loc.location_name !== locationToDelete)
       );
@@ -112,7 +113,7 @@ const Visualizations = () => {
             // Add the location with coordinates
             await AddLocation(location, lat, lng);
 
-            // Add the new location to the `savedLocations` list directly with lat and lng
+            // Add the new location to the savedLocations list directly with lat and lng
             setSavedLocations(prevLocations => [
                 ...prevLocations,
                 {
@@ -132,42 +133,7 @@ const Visualizations = () => {
     } else {
         toast.error("Failed to fetch coordinates. Please try again.");
     }
-};
-
-
-/*  const handleAddLocation = async () => {
-    if (!location) return;
-
-    // Fetch coordinates from your API based on the selected location
-    const coordinates = await fetchCoordinates(location); // Ensure fetchCoordinates is defined to get lat & lng
-console.log(coordinates);
-    if (coordinates) {
-        const { lat, lng } = coordinates; // Destructure the lat and lng
-
-        try {
-            // Add the location with coordinates
-            await AddLocation(location, lat, lng); // Ensure AddLocation can store lat & lng
-
-            // After adding, fetch the updated list of locations
-            const updatedLocations = await GetUserLocations();
-
-            // Update your savedLocations state
-            setSavedLocations(updatedLocations.map(loc => ({
-                id: loc.id,
-                location_name: loc.location_name,
-                lat: loc.latitude, // Use the latitude from the database
-                lng: loc.longitude, // Use the longitude from the database
-            })));
-
-            setLocation(""); // Clear the input after adding
-        } catch (error) {
-            console.error("Error adding location:", error);
-            toast.error("Failed to add location. Please try again.");
-        }
-    } else {
-        toast.error("Failed to fetch coordinates. Please try again.");
-    }
-};*/
+  };
 
   const handleSuggestionClick = async (suggestion) => {
     setLocation(suggestion.formatted);

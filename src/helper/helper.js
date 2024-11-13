@@ -43,11 +43,6 @@ export async function AddLocation(location_name, latitude, longitude) {
     // Get email from sessionStorage
     const user = sessionStorage.getItem("email");
 console.log(user);
-    if (!user ) {
-      throw new Error("User email is not found in session storage.");
-    }
-    console.log('no user');
-
     // Make the API call with email, location_name, lat, and lng
     const { data: { msg } } = await Axios.post("http://localhost:3500/api/visualizations", {
       email: user,

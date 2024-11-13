@@ -1,116 +1,88 @@
-const mysql = require('mysql2/promise');
+const { MongoClient, ObjectId } = require('mongodb');  // No need to import ObjectId
+
+const uri = 'mongodb+srv://daniyashm2022:JM3tLZuAg8pHbXdc@organizations.khdfp.mongodb.net/?retryWrites=true&w=majority&appName=organizations'; // Replace with your MongoDB Atlas connection string
+let client;
 
 async function dbconnection() {
-    try {
-        const connection = await mysql.createConnection({
-            host: 'localhost',
-            user: 'root',
-            password: 'admin123',
-            database: 'solarops',
-        });
-        console.log('Connected to MySQL database');
-        return connection;
-    } catch (error) {
-        console.error('Error connecting to MySQL database:', error);
-        throw error;
+    if (!client) {
+        client = new MongoClient(uri);
+        await client.connect();
+        console.log('Connected to MongoDB Atlas');
     }
+    return client.db('solarops');
 }
 
 async function fetchData(email) {
-    const connection = await dbconnection();
-    const [rows] = await connection.query('SELECT * FROM organizations WHERE email = ?', [email]);
-    connection.end(); // Close the connection
-    return rows;
+    const db = await dbconnection();
+    const result = await db.collection('organizations').findOne({ email });
+    return result;
 }
 
 async function insertData({ organizationName, email, password, location }) {
-    const connection = await dbconnection();
-    const [result] = await connection.query(
-        'INSERT INTO organizations (organization_name, email, password, location) VALUES (?, ?, ?, ?)',
-        [organizationName, email, password, location]
-    );
-    connection.end(); // Close the connection
+    const db = await dbconnection();
+    const result = await db.collection('organizations').insertOne({
+        organization_name: organizationName,
+        email,
+        password,
+        location
+    });
     return result;
 }
 
 async function fetchDataByEmailAndOrganization(email, organizationName) {
-    const connection = await dbconnection();
-    const [rows] = await connection.execute('SELECT email, organization_name AS organizationName, password FROM organizations WHERE email = ? AND organization_name = ?', [email, organizationName]);
-    await connection.end();
-    return rows;
-  }
+    const db = await dbconnection();
+    const result = await db.collection('organizations').findOne({
+        email,
+        organization_name: organizationName
+    }, { projection: { email: 1, organization_name: 1, password: 1 } });
+    return result;
+}
 
-  async function fetchOrganizationidByEmail(email) {
-    const connection = await dbconnection();
-    try{
-    const [rows] = await connection.execute('SELECT id AS organization_id FROM organizations WHERE email = ?', [email]);
-    if (rows.length > 0) {
-        return rows[0].organization_id;
-    } else {
+async function fetchOrganizationIdByEmail(email) {
+    const db = await dbconnection();
+    const organization = await db.collection('organizations').findOne({ email }, { projection: { _id: 1 } });
+    if (!organization) {
         throw new Error('No organization found for the given email.');
     }
-} catch (error) {
-    console.error('Error fetching organization ID:', error);
-    throw error; // Rethrow the error after logging it
-} finally {
-    await connection.end();
-}
+    return organization._id; // Return the MongoDB _id field as organization_id
 }
 
 async function insertLocation({ organization_id, location_name, latitude, longitude }) {
-    const connection = await dbconnection();
-    try {
-        const [result] = await connection.query(
-            'INSERT INTO locations (organization_id, location_name, latitude, longitude) VALUES (?, ?, ?, ?)', 
-            [organization_id, location_name, latitude, longitude]
-        );
-
-        return result;
-    } catch (error) {
-        console.error('Error inserting location:', error);
-        throw error; // Rethrow the error after logging it
-    } finally {
-       await connection.end(); // Ensure connection is closed
-    }
+    const db = await dbconnection();
+    const result = await db.collection('locations').insertOne({
+        organization_id: new ObjectId(organization_id),  // Use the ObjectId constructor from the MongoClient instance
+        location_name,
+        latitude,
+        longitude
+    });
+    return result;
 }
-
 
 async function fetchLocationsByOrganizationId(organization_id) {
-    const connection = await dbconnection();
-    try {
-        const [rows] = await connection.query(
-            "SELECT id, location_name, latitude, longitude FROM locations WHERE organization_id = ?",
-            [organization_id]
-        );
-        return rows; // Return rows containing both id and location_name
-    } catch (error) {
-        console.error("Error fetching locations by organization ID:", error);
-        throw error;
-    } finally {
-        await connection.end(); // Close the connection
-    }
+    const db = await dbconnection();
+    const locations = await db.collection('locations').find({
+        organization_id: new ObjectId(organization_id)  // Same here
+    }, { projection: { id: 1, location_name: 1, latitude: 1, longitude: 1 } }).toArray();
+    return locations;
 }
 
-
 async function deleteLocationByName(location_name, organization_id) {
-    const connection = await dbconnection();
-    try {
-        const [result] = await connection.query(
-            "DELETE FROM locations WHERE location_name = ? AND organization_id = ?",
-            [location_name, organization_id]
-        );
-        return result; // Return the result of the delete operation
-    } catch (error) {
-        console.error('Error deleting location:', error);
-        throw error;
-    } finally {
-        await connection.end(); // Close the connection
-    }
+    const db = await dbconnection();
+    const result = await db.collection('locations').deleteOne({
+        location_name,
+        organization_id: new ObjectId(organization_id)  // Same here
+    });
+    return result;
 }
 
 module.exports = {
     fetchData,
     insertData,
-    fetchDataByEmailAndOrganization, insertLocation, fetchOrganizationidByEmail, fetchLocationsByOrganizationId, deleteLocationByName
+    fetchDataByEmailAndOrganization,
+    insertLocation,
+    fetchOrganizationIdByEmail,
+    fetchLocationsByOrganizationId,
+    deleteLocationByName
 };
+
 
