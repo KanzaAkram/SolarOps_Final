@@ -27,14 +27,13 @@ export async function loginUser(credentials) {
   }
 }
 
-// Function to fetch prediction data
 export async function fetchPrediction(data) {
   try {
-    const response = await Axios.post('https://ppgmodel-production.up.railway.app/predict/gb', data);
+    const response = await Axios.post('http://localhost:3500/proxy/predict/gb', data);
     console.log(response.data);
     return Promise.resolve(response.data);
   } catch (error) {
-    return Promise.reject({ error: error.response.data.error });
+    return Promise.reject({ error: error.response?.data?.error || 'An error occurred' });
   }
 }
 
@@ -118,21 +117,15 @@ export async function DeleteLocation(location_name) {
 
 export const fetchFaultPrediction = async (formData) => {
   try {
-    const response = await fetch(
-      "https://faultdetmodel-production.up.railway.app/predict/",
-      {
-        // Replace with your ngrok URL
-        method: "POST",
-        body: formData,
-      }
-    );
+    const response = await fetch("http://localhost:3500/proxy/predict", {
+      method: "POST",
+      body: formData,
+    });
 
     if (!response.ok) {
-      // Throw an error with the status code for better debugging
       throw new Error(`Server responded with status ${response.status}`);
     }
 
-    // Parse the JSON response from the server
     return await response.json();
   } catch (error) {
     console.error("Error details:", error);
