@@ -12,7 +12,7 @@ app.use(morgan('tiny'));
 app.disable('x-powered-by');
 
 app.use(cors({
-  origin: ['*','https://ppgmodel-production.up.railway.app/predict/gb','https://faultdetmodel-production.up.railway.app/predict/'], 
+  origin: ['https://solarops-client-235g6lu9x-daniyashm2022-gmailcoms-projects.vercel.app','https://ppgmodel-production.up.railway.app/predict/gb','https://faultdetmodel-production.up.railway.app/predict/'], 
   credentials: true,
 }));
 
