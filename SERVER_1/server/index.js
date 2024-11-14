@@ -12,10 +12,18 @@ app.use(morgan('tiny'));
 app.disable('x-powered-by');
 
 app.use(cors({
-  origin: ['https://solarops-client-235g6lu9x-daniyashm2022-gmailcoms-projects.vercel.app','https://ppgmodel-production.up.railway.app/predict/gb','https://faultdetmodel-production.up.railway.app/predict/'], 
-  credentials: true,
-}));
+  origin: function (origin, callback) {
+    const allowedPattern = /^https:\/\/.*\.vercel\.app$/; // Match any subdomain of vercel.app
 
+    if (allowedPattern.test(origin)) {
+      callback(null, true);  // Allow the origin
+    } else {
+      callback(new Error('Not allowed by CORS'));  // Deny the origin
+    }
+  },
+  methods: ['GET', 'POST'],
+  allowedHeaders: ['Content-Type', 'Authorization'],
+}));
 app.use('/api', router);
 
 app.listen(port, () => {
