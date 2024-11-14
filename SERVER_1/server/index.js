@@ -21,9 +21,9 @@ app.use(cors({
       callback(new Error('Not allowed by CORS'));  // Deny the origin
     }
   },
-  methods: ['GET', 'POST'],
-  allowedHeaders: ['Content-Type', 'Authorization'],
+  credentials: true,
 }));
+
 app.use('/api', router);
 
 app.listen(port, () => {
