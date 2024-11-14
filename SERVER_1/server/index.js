@@ -15,9 +15,6 @@ app.disable('x-powered-by');
 app.use(cors({
   origin: ['*','https://ppgmodel-production.up.railway.app/predict/gb','"https://faultdetmodel-production.up.railway.app/predict/"'], // Allow requests from this origin
   credentials: true, 
-  headers: {
-    'Access-Control-Allow-Origin': '*',
-  }// Allow cookies and credentials (if needed)
 }));
 
 app.use('/api', router);
