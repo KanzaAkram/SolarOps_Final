@@ -11,9 +11,8 @@ app.use(express.json());
 app.use(morgan('tiny'));
 app.disable('x-powered-by');
 
-// CORS configuration to allow requests from your React app
 app.use(cors({
-  origin: ['*','https://ppgmodel-production.up.railway.app/predict/gb','"https://faultdetmodel-production.up.railway.app/predict/"'], // Allow requests from this origin
+  origin: ['https://ppgmodel-production.up.railway.app/predict/gb','"https://faultdetmodel-production.up.railway.app/predict/"'], 
   credentials: true, 
 }));
 
