@@ -13,7 +13,7 @@ app.disable('x-powered-by');
 
 // CORS configuration to allow requests from your React app
 app.use(cors({
-  origin: '*', // Allow requests from this origin
+  origin: 'https://solarops-client-g2cqex4m7-daniyashm2022-gmailcoms-projects.vercel.app', // Allow requests from this origin
   credentials: true, // Allow cookies and credentials (if needed)
 }));
 
