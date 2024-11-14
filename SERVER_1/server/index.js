@@ -11,15 +11,7 @@ app.use(morgan('tiny'));
 app.disable('x-powered-by');
 
 app.use(cors({
-  origin: function (origin, callback) {
-    const allowedPattern = /^https:\/\/.*\.vercel\.app$/; // Match any subdomain of vercel.app
-
-    if (allowedPattern.test(origin)) {
-      callback(null, true);  // Allow the origin
-    } else {
-      callback(new Error('Not allowed by CORS'));  // Deny the origin
-    }
-  },
+  origin:"*",
   credentials: true,
 }));
 
