@@ -14,7 +14,10 @@ app.disable('x-powered-by');
 // CORS configuration to allow requests from your React app
 app.use(cors({
   origin: ['*','https://ppgmodel-production.up.railway.app/predict/gb','"https://faultdetmodel-production.up.railway.app/predict/"'], // Allow requests from this origin
-  credentials: true, // Allow cookies and credentials (if needed)
+  credentials: true, 
+  headers: {
+    'Access-Control-Allow-Origin': '*',
+  }// Allow cookies and credentials (if needed)
 }));
 
 app.use('/api', router);
