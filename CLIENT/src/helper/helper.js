@@ -13,7 +13,7 @@ export async function SignUp(credentials) {
 
 export async function loginUser(credentials) {
   try {
-    const { data } = await Axios.post('https://solar-ops-final.vercel.app//api/login', credentials);
+    const { data } = await Axios.post('https://solar-ops-final.vercel.app/api/login', credentials);
     
     // Store user info in sessionStorage
     console.log(data.user.organizationName);
