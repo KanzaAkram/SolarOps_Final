@@ -27,29 +27,14 @@ export async function loginUser(credentials) {
   }
 }
 
+// Function to fetch prediction data
 export async function fetchPrediction(data) {
   try {
-    const response = await fetch('https://ppgmodel-production.up.railway.app/predict/gb', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(data),
-      mode: 'no-cors', // This disables CORS
-    });
-
-    // Since no-cors mode results in an opaque response, you won't be able to access response.data
-    // You can only check if the request was successful by inspecting response.ok, etc.
-    if (response.ok) {
-      console.log('Request successful');
-      return Promise.resolve(response);  // This will return an opaque response
-    } else {
-      console.error('Request failed');
-      return Promise.reject({ error: 'Request failed with status: ' + response.status });
-    }
+    const response = await Axios.post('https://ppgmodel-production.up.railway.app/predict/gb', data);
+    console.log(response.data);
+    return Promise.resolve(response.data);
   } catch (error) {
-    console.error("Error:", error);
-    return Promise.reject({ error: 'An error occurred' });
+    return Promise.reject({ error: error.response.data.error });
   }
 }
 
@@ -139,7 +124,7 @@ export const fetchFaultPrediction = async (formData) => {
         // Replace with your ngrok URL
         method: "POST",
         body: formData,
-        mode: 'no-cors',
+        
       }
     );
 
