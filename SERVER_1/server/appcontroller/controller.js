@@ -1,5 +1,5 @@
 const db = require('./dbconnection');
-const bcrypt = require('bcrypt');
+const bcrypt = require('bcryptjs');
 
 async function register(req, res) {
   try {
