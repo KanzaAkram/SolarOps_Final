@@ -7,33 +7,6 @@ const router = require("./Router/router");
 const app = express();
 
 app.use(express.json());
-
-app.post("/api/predict-fault", async (req, res) => {
-  try {
-    const response = await axios.post(
-      "https://faultdetmodel-production.up.railway.app/predict/",
-      req.body
-    );
-    res.json(response.data);  // Return the external API's response to the frontend
-  } catch (error) {
-    console.error("Error in /api/predict-fault:", error);
-    res.status(500).json({ error: "Failed to fetch prediction from external API" });
-  }
-});
-
-// Proxy route for PPG Prediction
-app.post("/api/predict-pg", async (req, res) => {
-  try {
-    const response = await axios.post(
-      "https://ppgmodel-production.up.railway.app/predict/gb",
-      req.body
-    );
-    res.json(response.data);  // Return the external API's response to the frontend
-  } catch (error) {
-    console.error("Error in /api/predict-pg:", error);
-    res.status(500).json({ error: "Failed to fetch prediction from external API" });
-  }
-});
 app.use(morgan('tiny'));
 app.disable('x-powered-by');
 
