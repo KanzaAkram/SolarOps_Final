@@ -11,11 +11,28 @@ app.use(express.json());
 app.use(morgan('tiny'));
 app.disable('x-powered-by');
 
-// CORS configuration to allow requests from your React app
-app.use(cors({
-  origin: 'https://solarops-client-g2cqex4m7-daniyashm2022-gmailcoms-projects.vercel.app', // Allow requests from this origin
-  credentials: true, // Allow cookies and credentials (if needed)
-}));
+app.use(
+  cors({
+    origin: '*', // Allow requests from any origin (you can restrict to specific domains if needed)
+    credentials: true, // Allow cookies and credentials (if needed)
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'OPTIONS'], // Allow specific HTTP methods
+    allowedHeaders: [
+      'Content-Type',
+      'Authorization',
+      'X-Requested-With',
+      'Accept',
+      'X-CSRF-Token',
+    ], // Allow these headers to be included in requests
+  })
+);
+
+// Handle preflight OPTIONS request
+app.options('*', (req, res) => {
+  res.header('Access-Control-Allow-Origin', '*');
+  res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, PATCH, OPTIONS');
+  res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization, X-Requested-With, Accept, X-CSRF-Token');
+  res.send(); // Respond without body
+});
 
 app.use('/api', router);
 
