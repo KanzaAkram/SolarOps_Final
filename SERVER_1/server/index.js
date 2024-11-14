@@ -12,7 +12,7 @@ app.use(morgan('tiny'));
 app.disable('x-powered-by');
 
 app.use(cors({
-  origin: ['https://ppgmodel-production.up.railway.app/predict/gb','https://faultdetmodel-production.up.railway.app/predict/'], 
+  origin: ['*','https://ppgmodel-production.up.railway.app/predict/gb','https://faultdetmodel-production.up.railway.app/predict/'], 
   credentials: true,
   headers: ['Content Type']  
 }));
