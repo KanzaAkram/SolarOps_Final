@@ -27,6 +27,17 @@ import {
   twitter,
 } from "../assets";
 
+import image1 from '../assets/benefits/image-1.jpeg';
+import image2 from '../assets/benefits/image-6.png';
+import image3 from '../assets/benefits/image-3.jpeg';
+import image4 from '../assets/benefits/image-4.jpeg';
+import image5 from '../assets/benefits/image-5.jpeg';
+import card1 from '../assets/benefits/card-1.svg';
+import card2 from '../assets/benefits/card-2.svg';
+import card3 from '../assets/benefits/card-3.svg';
+import card4 from '../assets/benefits/card-4.svg';
+import card5 from '../assets/benefits/card-5.svg';
+
 export const navigation = [
   {
     id: "0",
@@ -165,16 +176,16 @@ export const benefits = [
     id: "0",
     title: "Fault Detection",
     text: "Spot Faults, Boost Performance: Upload, Detect, and Optimize with Confidence!",
-    backgroundUrl: "./src/assets/benefits/card-1.svg",
-    image: "./src/assets/benefits/image-1.jpeg", // replace this with the actual image path
+    backgroundUrl: card1,
+    image: image1, // replace this with the actual image path
     imageUrl: benefitImage2,
   },
   {
     id: "1",
     title: "Site Suitability Recommendations",
     text: "Find the Perfect Spot: Power Your Solar Setup with Precision Heatmaps!",
-    backgroundUrl: "./src/assets/benefits/card-2.svg",
-    image: "./src/assets/benefits/image-6.png", // replace this with the actual image path
+    backgroundUrl: card2,
+    image: image2, // replace this with the actual image path
     light: true,
     imageUrl: benefitImage2,
   },
@@ -182,16 +193,16 @@ export const benefits = [
     id: "2",
     title: "Solar Power Forecast",
     text: "Predict the Sun's Power: Optimize Solar Output with Data-Driven Insights!",
-    backgroundUrl: "./src/assets/benefits/card-3.svg",
-    image: "./src/assets/benefits/image-3.jpeg", // replace this with the actual image path
+    backgroundUrl: card3,
+    image: image3, // replace this with the actual image path
     imageUrl: benefitImage2,
   },
   {
     id: "3",
     title: "Solar Panel Installation and Management Manual",
     text: "Maximize Solar Energy: Expert Tips for Seamless Installation and Management!",
-    backgroundUrl: "./src/assets/benefits/card-4.svg",
-    image: "./src/assets/benefits/image-4.jpeg", // replace this with the actual image path
+    backgroundUrl: card4,
+    image: image4, // replace this with the actual image path
     light: true,
     imageUrl: benefitImage2,
   },
@@ -199,8 +210,8 @@ export const benefits = [
     id: "4",
     title: "Monitoring Tab",
     text: "Track Solar Performance: Monitor, Manage, and Maximize Output with Ease!",
-    backgroundUrl: "./src/assets/benefits/card-5.svg",
-    image: "./src/assets/benefits/image-5.jpeg", // replace this with the actual image path
+    backgroundUrl: card5,
+    image: image5, // replace this with the actual image path
     imageUrl: benefitImage2,
   },
 ];

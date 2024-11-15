@@ -1,4 +1,9 @@
 import React, { useRef } from 'react';
+import image1 from '../assets/image1.png';
+import image2 from '../assets/image2.png';
+import image3 from '../assets/image3.png';
+import image4 from '../assets/image4.png';
+import image5 from '../assets/image5.png';
 
 const TextToSpeech = ({ text, children }) => {
   const utteranceRef = useRef(null);
@@ -44,7 +49,7 @@ const UserManual = () => {
                 and management. By leveraging the latest industry standards and best practices, 
                 you can enhance energy output and ensure the efficient operation of your solar installations.
               </p>
-              <img className="w-[713px] h-[250px] mt-4" src="src/assets/image1.png" alt="Solar panel management illustration" />
+              <img className="w-[713px] h-[250px] mt-4" src={image1} alt="Solar panel management illustration" />
             </div>
           </TextToSpeech>
 
@@ -62,7 +67,7 @@ const UserManual = () => {
                 <li><strong>Regulatory Compliance:</strong> Check local regulations and obtain necessary permits.</li>
                 </ul>
             
-              <img className="w-[400px] h-[466px] pt-5 mt-9 pl-10" src="src/assets/image3.png" alt="Solar panel management illustration" />
+              <img className="w-[400px] h-[466px] pt-5 mt-9 pl-10" src={image3} alt="Solar panel management illustration" />
             </div>
             </TextToSpeech>
 
@@ -76,7 +81,7 @@ const UserManual = () => {
                 <li><strong>Cleaning Guidelines:</strong> Clean solar panels using soft brushes or cloths and non-abrasive cleaning solutions to prevent scratches.</li>
                 <li> <strong>Performance Monitoring:</strong> Utilize SolarOps' visualization tools to monitor energy output and identify any anomalies in performance.</li>
                 </ul>
-              <img className="w-[713px] h-[220px] mt-4" src="src/assets/image2.png" alt="Solar panel management illustration" />
+              <img className="w-[713px] h-[220px] mt-4" src={image2} alt="Solar panel management illustration" />
             </div>
           </TextToSpeech>
         </div>
@@ -92,7 +97,7 @@ const UserManual = () => {
               <p>
                 The content of this manual will be periodically updated to reflect new industry standards, technological advancements, and best practices. Stay informed by checking back regularly for the latest information.
               </p>
-              <img className="w-[832px] h-[335px] mt-4" src="src/assets/image4.png" alt="Solar panel management illustration" />
+              <img className="w-[832px] h-[335px] mt-4" src={image4} alt="Solar panel management illustration" />
             </div>
             </TextToSpeech>
 
@@ -115,7 +120,7 @@ const UserManual = () => {
                 Range:2500 to 7000 kWh/year per kW, found in exceptionally sunny regions with peak solar irradiance (above 7 kWh/m²/day).</li>
               </ul>
               <br />
-              <img className="w-[882px] h-[191px] mt-4" src="src/assets/image5.png" alt="Solar panel management illustration" />
+              <img className="w-[882px] h-[191px] mt-4" src={image5} alt="Solar panel management illustration" />
             </div>
             </TextToSpeech>
 
