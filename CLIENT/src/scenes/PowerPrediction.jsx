@@ -46,7 +46,7 @@ const PowerPrediction = () => {
     const password = "9jwN4ru2DJ";
     try {
       const response = await axios.get(
-        "https://login.meteomatics.com/api/v1/token",
+        "https://cors-anywhere.herokuapp.com/https://login.meteomatics.com/api/v1/token",
         {
           auth: {
             username,
@@ -163,7 +163,7 @@ const PowerPrediction = () => {
 
     try {
       const meteomaticsResponse = await axios.get(
-        `https://api.meteomatics.com/${date}T${currentHour}:00:00Z/t_2m:C,relative_humidity_20m:p,msl_pressure:hPa,precip_3h:mm,fresh_snow_3h:cm,global_rad_mean_3h:W,wind_speed_10m:ms,wind_dir_10m:d,wind_speed_80m:ms,wind_dir_80m:d/${lat},${lon}/json`,
+        `https://cors-anywhere.herokuapp.com/https://api.meteomatics.com/${date}T${currentHour}:00:00Z/t_2m:C,relative_humidity_20m:p,msl_pressure:hPa,precip_3h:mm,fresh_snow_3h:cm,global_rad_mean_3h:W,wind_speed_10m:ms,wind_dir_10m:d,wind_speed_80m:ms,wind_dir_80m:d/${lat},${lon}/json`,
         {
           headers: {
             Authorization: `Bearer ${accessToken}`,
