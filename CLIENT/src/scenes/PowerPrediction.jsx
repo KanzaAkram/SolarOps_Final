@@ -176,7 +176,7 @@ const PowerPrediction = () => {
       console.log(accessToken);
 
       const windGustResponse = await axios.get(
-        `https://api.meteomatics.com/${date}T${
+        `https://cors-anywhere.herokuapp.com/https://api.meteomatics.com/${date}T${
           currentHour
         }:00:00Z/wind_gusts_10m_3h:ms,sun_elevation:d,sun_azimuth:d/${lat},${lon}/json`,
         {
@@ -187,7 +187,7 @@ const PowerPrediction = () => {
       );
 
       const data2 = windGustResponse.data;
-      const wind_url = `https://api.meteomatics.com/${date}T${
+      const wind_url = `https://cors-anywhere.herokuapp.com/https://api.meteomatics.com/${date}T${
         currentHour}:00:00Z/wind_gusts_10m_3h:ms,sun_azimuth:d,sun_elevation:d/${lat},${lon}/json`;
       console.log(wind_url);
       console.log(data2);
@@ -274,7 +274,7 @@ const PowerPrediction = () => {
         setPredictionData(predictionData);
 
         const cloudCoverResponse = await axios.get(
-          `https://api.meteomatics.com/${date}T${currentHour}:00:00Z/high_cloud_cover_mean_2h:p,medium_cloud_cover_mean_2h:p,low_cloud_cover_mean_2h:p,total_cloud_cover_mean_2h:p/${lat},${lon}/csv`,
+          `https://cors-anywhere.herokuapp.com/https://api.meteomatics.com/${date}T${currentHour}:00:00Z/high_cloud_cover_mean_2h:p,medium_cloud_cover_mean_2h:p,low_cloud_cover_mean_2h:p,total_cloud_cover_mean_2h:p/${lat},${lon}/csv`,
           {
             headers: {
               Authorization: `Bearer ${accessToken}`,
@@ -346,7 +346,7 @@ const PowerPrediction = () => {
     console.log(currentHour);
     try {
       const meteomaticsResponse = await axios.get(
-        `https://api.meteomatics.com/${date}T${currentHour}:00:00Z/t_2m:C,relative_humidity_20m:p,msl_pressure:hPa,precip_3h:mm,fresh_snow_3h:cm,global_rad_mean_3h:W,wind_speed_10m:ms,wind_dir_10m:d,wind_speed_80m:ms,wind_dir_80m:d/${lat},${lon}/json`,
+        `https://cors-anywhere.herokuapp.com/https://api.meteomatics.com/${date}T${currentHour}:00:00Z/t_2m:C,relative_humidity_20m:p,msl_pressure:hPa,precip_3h:mm,fresh_snow_3h:cm,global_rad_mean_3h:W,wind_speed_10m:ms,wind_dir_10m:d,wind_speed_80m:ms,wind_dir_80m:d/${lat},${lon}/json`,
         {
           headers: {
             Authorization: `Bearer ${accessToken}`,
@@ -359,7 +359,7 @@ const PowerPrediction = () => {
       console.log(accessToken);
 
       const windGustResponse = await axios.get(
-        `https://api.meteomatics.com/${date}T${currentHour}:00:00Z/wind_gusts_10m_3h:ms,sun_elevation:d,sun_azimuth:d/${lat},${lon}/json`,
+        `https://cors-anywhere.herokuapp.com/https://api.meteomatics.com/${date}T${currentHour}:00:00Z/wind_gusts_10m_3h:ms,sun_elevation:d,sun_azimuth:d/${lat},${lon}/json`,
         {
           headers: {
             Authorization: `Bearer ${accessToken}`,
@@ -368,7 +368,7 @@ const PowerPrediction = () => {
       );
 
       const data2 = windGustResponse.data;
-      const wind_url = `https://api.meteomatics.com/${date}T${currentHour}:00:00Z/wind_gusts_10m_3h:ms,sun_azimuth:d,sun_elevation:d/${lat},${lon}/json`;
+      const wind_url = `https://cors-anywhere.herokuapp.com/https://api.meteomatics.com/${date}T${currentHour}:00:00Z/wind_gusts_10m_3h:ms,sun_azimuth:d,sun_elevation:d/${lat},${lon}/json`;
       console.log(wind_url);
       console.log(data2);
 
@@ -454,7 +454,7 @@ const PowerPrediction = () => {
         setNearbypredictionData(NearbypredictionData);
 
         const cloudCoverResponse = await axios.get(
-          `https://api.meteomatics.com/${date}T${currentHour}:00:00Z/high_cloud_cover_mean_2h:p,medium_cloud_cover_mean_2h:p,low_cloud_cover_mean_2h:p,total_cloud_cover_mean_2h:p/${lat},${lon}/csv`,
+          `https://cors-anywhere.herokuapp.com/https://api.meteomatics.com/${date}T${currentHour}:00:00Z/high_cloud_cover_mean_2h:p,medium_cloud_cover_mean_2h:p,low_cloud_cover_mean_2h:p,total_cloud_cover_mean_2h:p/${lat},${lon}/csv`,
           {
             headers: {
               Authorization: `Bearer ${accessToken}`,

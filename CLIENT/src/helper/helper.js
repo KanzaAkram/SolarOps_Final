@@ -30,7 +30,7 @@ export async function loginUser(credentials) {
 // Function to fetch prediction data
 export async function fetchPrediction(data) {
   try {
-    const response = await Axios.post('https://ppgmodel-production.up.railway.app/predict/gb', data);
+    const response = await Axios.post('https://cors-anywhere.herokuapp.com/https://ppgmodel-production.up.railway.app/predict/gb', data);
     console.log(response.data);
     return Promise.resolve(response.data);
   } catch (error) {
@@ -119,7 +119,7 @@ export async function DeleteLocation(location_name) {
 export const fetchFaultPrediction = async (formData) => {
   try {
     const response = await fetch(
-      "https://faultdetmodel-production.up.railway.app/predict/",
+      "https://cors-anywhere.herokuapp.com/https://faultdetmodel-production.up.railway.app/predict/",
       {
         // Replace with your ngrok URL
         method: "POST",

@@ -9,4 +9,5 @@ router.route('/visualizations')
   .get(controller.getUserLocations)     // Fetch all locations
   .delete(controller.deleteLocation);   // Delete a location using the request body
 
+
 module.exports = router;
