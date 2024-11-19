@@ -40,17 +40,17 @@ const Visualizations = () => {
     adjustTextareaHeight();
   }, [location]);
 
-  useEffect(() => {
-    const fetchLocations = async () => {
-      try {
-        const locations = await GetUserLocations();
-        setSavedLocations(locations);
-      } catch (error) {
-        console.error("Error fetching locations:", error);
-      }
-    };
-    fetchLocations();
-  }, []);
+  // useEffect(() => {
+  //   const fetchLocations = async () => {
+  //     try {
+  //       const locations = await GetUserLocations();
+  //       setSavedLocations(locations);
+  //     } catch (error) {
+  //       console.error("Error fetching locations:", error);
+  //     }
+  //   };
+  //   fetchLocations();
+  // }, []);
 
   const handleDeleteClick = (location_name) => {
     setLocationToDelete(location_name); 
