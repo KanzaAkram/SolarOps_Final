@@ -103,7 +103,7 @@ export async function DeleteLocation(location_name) {
       }
 
       // Make sure to include the email in the headers and location_name in the URL
-      const { data: { msg } } = await Axios.delete('https://solarops-final-server.vercel.app/api/visualizations?location_name=${encodeURIComponent(location_name)}', {
+      const { data: { msg } } = await Axios.delete(`https://solarops-final-server.vercel.app/api/visualizations?location_name=${encodeURIComponent(location_name)}`, {
           headers: {
               "user-email": user,
           }
